@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CloudArrowUpIcon } from "@heroicons/react/24/outline";
+import { ArrowUpTrayIcon } from "@heroicons/react/24/solid";
 import { cn } from "@/lib/utils";
 
 export interface DragDropProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -115,12 +115,12 @@ export const DragDrop = React.forwardRef<HTMLDivElement, DragDropProps>(
         onDragLeave={onDragLeave}
         className={cn(
           "flex flex-col items-center justify-center gap-[10px] p-8 rounded-lg",
-          "border border-dashed",
+          "border-2 border-dashed",
           isDisabled
             ? "border-neutral-300 cursor-not-allowed opacity-60"
             : isDragging
-            ? "border-supreme-blue-700 bg-supreme-blue-50"
-            : "border-supreme-blue-600",
+            ? "border-neutral-300 bg-supreme-blue-50"
+            : "border-neutral-300 hover:border-supreme-blue-100",
           className
         )}
         {...props}
@@ -141,7 +141,7 @@ export const DragDrop = React.forwardRef<HTMLDivElement, DragDropProps>(
           </>
         ) : (
           <>
-            <CloudArrowUpIcon 
+            <ArrowUpTrayIcon 
               style={{
                 width: iconSizePx,
                 height: iconSizePx,

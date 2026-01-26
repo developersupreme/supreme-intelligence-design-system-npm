@@ -398,26 +398,27 @@ var import_class_variance_authority2 = require("class-variance-authority");
 var import_outline3 = require("@heroicons/react/24/outline");
 var import_jsx_runtime4 = require("react/jsx-runtime");
 var buttonVariants = (0, import_class_variance_authority2.cva)(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-gradient-to-b from-[#403A9A] to-[#1A1475] text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93] active:bg-gradient-to-b active:from-[#1A1475] active:to-[#403A9A] active:scale-95 transition-all duration-300 ease-out",
-        "primary-stroke": "border border-[#272080] ring-2 ring-white bg-gradient-to-b from-[#403A9A] to-[#1A1475] text-white shadow-[0px_0px_0px_2.3px_#6C62ED] hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93] hover:shadow-[0px_0px_0px_2.3px_#6C62ED] active:bg-gradient-to-b active:from-[#1A1475] active:to-[#403A9A] active:scale-95 transition-all duration-300 ease-out",
+        primary: "bg-[#4136D4] text-white hover:bg-[#372AAC] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
+        "primary-stroke": "border border-[#272080] ring-2 ring-white bg-[#4136D4] text-white shadow-[0px_0px_0px_2.3px_#6C62ED] hover:bg-[#372AAC] hover:shadow-[0px_0px_0px_2.3px_#6C62ED] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
         secondary: "border border-[#D4D4D4] bg-white text-[#737373] hover:bg-white hover:text-[#272080] hover:border-[#272080] transition-all duration-300 ease-out",
         "secondary-color": "bg-[#EDEBFD] text-[#272080] border border-[#D4D4D4] hover:border-[#272080] transition-all duration-300 ease-out",
         "secondary-blue": "bg-[#EDEBFD] text-gray-700 border border-[#C6C2F8] hover:border-[#272080] transition-all duration-300 ease-out",
         link: "text-[#272080] underline-offset-4 hover:underline bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
-        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]"
+        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
+        outline: "h-9 px-4 rounded-[8px] text-[#737373] border-[#d4d4d4] border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
       },
       size: {
-        default: "h-10 rounded-full px-6 py-2",
-        md: "h-8 rounded-full px-3.5 py-2 text-sm gap-1 min-w-[105px]",
-        lg: "h-10 rounded-full px-5 py-2.5 text-base gap-1 min-w-[123px]",
-        xl: "h-12 rounded-full px-10 text-lg",
-        icon: "h-10 w-10 rounded-full px-2.5 py-2.5 gap-2.5",
-        "icon-sm": "h-8 w-8 rounded-full px-2 py-2 gap-2",
-        "icon-lg": "h-12 w-12 rounded-full px-3 py-3 gap-3"
+        default: "h-10 rounded-[8px] px-6 py-2",
+        md: "h-8 rounded-[8px] px-3.5 py-2 text-sm gap-1 min-w-[105px]",
+        lg: "h-10 rounded-[8px] px-5 py-2.5 text-base gap-1 min-w-[123px]",
+        xl: "h-12 rounded-[8px] px-10 text-lg",
+        icon: "h-10 w-10 rounded-[8px] px-2.5 py-2.5 gap-2.5",
+        "icon-sm": "h-8 w-8 rounded-[8px] px-2 py-2 gap-2",
+        "icon-lg": "h-12 w-12 rounded-[8px] px-3 py-3 gap-3"
       }
     },
     defaultVariants: {
@@ -661,7 +662,7 @@ var Progress = React7.forwardRef(({ className, value, indicatorClassName, showLa
               ProgressPrimitive.Indicator,
               {
                 className: cn(
-                  "h-full rounded-full bg-supreme-blue-600 transition-all duration-500 ease-out",
+                  "h-full rounded-full bg-[#4136D4] transition-all duration-500 ease-out",
                   indicatorClassName
                 ),
                 style: {
@@ -693,7 +694,7 @@ var Progress = React7.forwardRef(({ className, value, indicatorClassName, showLa
             ProgressPrimitive.Indicator,
             {
               className: cn(
-                "h-full rounded-full bg-supreme-blue-600 transition-all",
+                "h-full rounded-full bg-[#4136D4] transition-all",
                 indicatorClassName
               ),
               style: {
@@ -1054,20 +1055,20 @@ var Checkbox = React9.forwardRef(({ className, externalState, ...props }, ref) =
         // Default state
         "border-neutral-500",
         // Hover state
-        "hover:border-supreme-blue-700 hover:bg-supreme-blue-50",
+        "hover:border-[#4136D4] hover:bg-[#EDEBFD]",
         // Focus state
-        "focus:outline-none focus:border-supreme-blue-100 focus:bg-white",
+        "focus:outline-none focus:border-[#4136D4] focus:bg-white",
         // Disabled state
         "disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:border-neutral-300 disabled:hover:border-neutral-300 disabled:hover:bg-neutral-100",
         // Checked/Indeterminate states
-        (state === "checked" || state === "indeterminate") && "bg-supreme-blue-50 border-supreme-blue-700",
+        (state === "checked" || state === "indeterminate") && "bg-supreme-blue-50 border-[#4136D4]",
         className
       ),
       onClick: handleClick,
       ...props,
       children: /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("div", { className: "absolute inset-0 flex items-center justify-center p-0.5", children: [
-        state === "checked" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_outline6.CheckIcon, { className: "h-3 w-3 text-supreme-blue-700" }),
-        state === "indeterminate" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_outline6.MinusIcon, { className: "h-3 w-3 text-supreme-blue-700" })
+        state === "checked" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_outline6.CheckIcon, { className: "h-3 w-3 text-[#4136D4]" }),
+        state === "indeterminate" && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(import_outline6.MinusIcon, { className: "h-3 w-3 text-[#4136D4]" })
       ] })
     }
   );
@@ -3422,8 +3423,8 @@ var Slider = React20.forwardRef(({ className, ...props }, ref) => /* @__PURE__ *
     ),
     ...props,
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200", children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-supreme-blue-600 rounded-full" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-supreme-blue-600 bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200", children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-[#4136D4] rounded-full" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-[#4136D4] bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })
     ]
   }
 ));
@@ -3441,9 +3442,9 @@ var RangeSlider = React20.forwardRef(({ className, defaultValue, value, onValueC
     onValueChange,
     ...props,
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200", children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-supreme-blue-600 rounded-full" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-supreme-blue-600 bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" }),
-      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-supreme-blue-600 bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Track, { className: "relative h-2 w-full grow overflow-hidden rounded-full bg-neutral-200", children: /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Range, { className: "absolute h-full bg-[#4136D4] rounded-full" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-[#4136D4] bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" }),
+      /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(SliderPrimitive.Thumb, { className: "block h-6 w-6 rounded-full border-2 border-[#4136D4] bg-white shadow-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50" })
     ]
   }
 ));
@@ -4477,9 +4478,9 @@ var toggleVariants = (0, import_class_variance_authority8.cva)(
     variants: {
       variant: {
         default: "bg-white border border-slate-400 focus:ring-4 focus:ring-blue-500/20",
-        checked: "bg-gradient-to-b from-[#403A9A] to-[#1A1475] border border-[#403A9A] focus:ring-4 focus:ring-blue-500/20",
+        checked: "bg-[#4136d4] border border-[#403A9A] focus:ring-4 focus:ring-blue-500/20",
         disabled: "bg-white border border-slate-400 opacity-50 focus:ring-4 focus:ring-blue-500/20",
-        disabledChecked: "bg-gradient-to-b from-[#403A9A] to-[#1A1475] border border-[#403A9A] opacity-50 focus:ring-4 focus:ring-blue-500/20"
+        disabledChecked: "bg-[#4136d4] border border-[#403A9A] opacity-50 focus:ring-4 focus:ring-blue-500/20"
       },
       size: {
         sm: "w-8 h-4 p-0.5",
@@ -4514,7 +4515,7 @@ var Toggle = React26.forwardRef(
       if (props.disabled) {
         return isChecked ? "bg-white" : "bg-slate-400";
       }
-      return isChecked ? "bg-white" : "bg-[#403A9A]";
+      return isChecked ? "bg-slate-200" : "bg-[#4136d4]";
     };
     return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
       TogglePrimitive.Root,

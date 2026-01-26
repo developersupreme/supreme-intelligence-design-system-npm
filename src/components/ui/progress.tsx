@@ -47,7 +47,7 @@ const Progress = React.forwardRef<
           >
             <ProgressPrimitive.Indicator
               className={cn(
-                "h-full rounded-full bg-supreme-blue-600 transition-all duration-500 ease-out",
+                "h-full rounded-full bg-[#4136D4] transition-all duration-500 ease-out",
                 indicatorClassName
               )}
               style={{
@@ -82,7 +82,7 @@ const Progress = React.forwardRef<
         >
           <ProgressPrimitive.Indicator
             className={cn(
-              "h-full rounded-full bg-supreme-blue-600 transition-all",
+              "h-full rounded-full bg-[#4136D4] transition-all",
               indicatorClassName
             )}
             style={{

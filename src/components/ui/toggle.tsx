@@ -12,11 +12,11 @@ const toggleVariants = cva(
         default:
           "bg-white border border-slate-400 focus:ring-4 focus:ring-blue-500/20",
         checked:
-          "bg-gradient-to-b from-[#403A9A] to-[#1A1475] border border-[#403A9A] focus:ring-4 focus:ring-blue-500/20",
+          "bg-[#4136d4] border border-[#403A9A] focus:ring-4 focus:ring-blue-500/20",
         disabled:
           "bg-white border border-slate-400 opacity-50 focus:ring-4 focus:ring-blue-500/20",
         disabledChecked:
-          "bg-gradient-to-b from-[#403A9A] to-[#1A1475] border border-[#403A9A] opacity-50 focus:ring-4 focus:ring-blue-500/20",
+          "bg-[#4136d4] border border-[#403A9A] opacity-50 focus:ring-4 focus:ring-blue-500/20",
       },
       size: {
         sm: "w-8 h-4 p-0.5",
@@ -65,7 +65,7 @@ const Toggle = React.forwardRef<
       if (props.disabled) {
         return isChecked ? "bg-white" : "bg-slate-400";
       }
-      return isChecked ? "bg-white" : "bg-[#403A9A]";
+      return isChecked ? "bg-slate-200" : "bg-[#4136d4]";
     };
 
     return (

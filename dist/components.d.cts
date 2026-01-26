@@ -123,7 +123,7 @@ declare const BreadcrumbEllipsis: {
 };
 
 declare const buttonVariants: (props?: {
-    variant?: "link" | "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "ghost";
+    variant?: "link" | "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "ghost" | "outline";
     size?: "default" | "md" | "lg" | "xl" | "icon" | "icon-sm" | "icon-lg";
 } & class_variance_authority_types.ClassProp) => string;
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
@@ -131,7 +131,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Var
      * The variant style of the button.
      * @default "primary"
      */
-    variant?: "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost";
+    variant?: "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost" | "outline";
     /**
      * The size of the button.
      * @default "default"

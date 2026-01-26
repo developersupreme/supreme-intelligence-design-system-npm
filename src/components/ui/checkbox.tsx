@@ -43,13 +43,13 @@ const Checkbox = React.forwardRef<
         // Default state
         "border-neutral-500",
         // Hover state
-        "hover:border-supreme-blue-700 hover:bg-supreme-blue-50",
+        "hover:border-[#4136D4] hover:bg-[#EDEBFD]",
         // Focus state
-        "focus:outline-none focus:border-supreme-blue-100 focus:bg-white",
+        "focus:outline-none focus:border-[#4136D4] focus:bg-white",
         // Disabled state
         "disabled:cursor-not-allowed disabled:bg-neutral-100 disabled:border-neutral-300 disabled:hover:border-neutral-300 disabled:hover:bg-neutral-100",
         // Checked/Indeterminate states
-        (state === "checked" || state === "indeterminate") && "bg-supreme-blue-50 border-supreme-blue-700",
+        (state === "checked" || state === "indeterminate") && "bg-supreme-blue-50 border-[#4136D4]",
         className
       )}
       onClick={handleClick}
@@ -58,10 +58,10 @@ const Checkbox = React.forwardRef<
       {/* Custom indicator that always shows based on our state */}
       <div className="absolute inset-0 flex items-center justify-center p-0.5">
         {state === "checked" && (
-          <CheckIcon className="h-3 w-3 text-supreme-blue-700" />
+          <CheckIcon className="h-3 w-3 text-[#4136D4]" />
         )}
         {state === "indeterminate" && (
-          <MinusIcon className="h-3 w-3 text-supreme-blue-700" />
+          <MinusIcon className="h-3 w-3 text-[#4136D4]" />
         )}
       </div>
     </CheckboxPrimitive.Root>
