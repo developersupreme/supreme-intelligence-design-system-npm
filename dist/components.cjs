@@ -403,13 +403,12 @@ var buttonVariants = (0, import_class_variance_authority2.cva)(
     variants: {
       variant: {
         primary: "bg-[#4136D4] text-white hover:bg-[#372AAC] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
-        "primary-stroke": "border border-[#272080] ring-2 ring-white bg-[#4136D4] text-white shadow-[0px_0px_0px_2.3px_#6C62ED] hover:bg-[#372AAC] hover:shadow-[0px_0px_0px_2.3px_#6C62ED] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
-        secondary: "border border-[#D4D4D4] bg-white text-[#737373] hover:bg-white hover:text-[#272080] hover:border-[#272080] transition-all duration-300 ease-out",
-        "secondary-color": "bg-[#EDEBFD] text-[#272080] border border-[#D4D4D4] hover:border-[#272080] transition-all duration-300 ease-out",
-        "secondary-blue": "bg-[#EDEBFD] text-gray-700 border border-[#C6C2F8] hover:border-[#272080] transition-all duration-300 ease-out",
-        link: "text-[#272080] underline-offset-4 hover:underline bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
-        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
-        outline: "h-9 px-4 rounded-[8px] text-[#737373] border-[#d4d4d4] border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+        secondary: "border border-[#D4D4D4] bg-white text-[#737373] hover:bg-white hover:text-[#272080] hover:border-[#272080] active:scale-95 active:text-[#272080] active:border-[#272080] transition-all duration-300 ease-out",
+        "secondary-color": "bg-[#EDEBFD] text-[#272080] border border-[#D4D4D4] hover:border-[#272080] active:scale-95 active:border-[#272080] transition-all duration-300 ease-out",
+        "secondary-blue": "bg-[#EDEBFD] text-gray-700 border border-[#C6C2F8] hover:border-[#272080] active:scale-95 active:border-[#272080] transition-all duration-300 ease-out",
+        link: "text-[#272080] underline-offset-4 hover:underline active:scale-95 bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
+        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px] active:scale-95",
+        outline: "h-9 px-4 rounded-[8px] text-[#737373] border-[#d4d4d4] border bg-background text-foreground hover:bg-accent hover:text-accent-foreground active:scale-95 active:bg-accent active:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 dark:active:bg-input/50"
       },
       size: {
         default: "h-10 rounded-[8px] px-6 py-2",
@@ -485,10 +484,10 @@ var bannerVariants = (0, import_class_variance_authority3.cva)(
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        primary: "bg-gradient-to-b from-supreme-blue-600 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        secondary: "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-600 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        dark: "bg-gradient-to-b from-supreme-blue-700 to-supreme-blue-800 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]"
+        default: "bg-supreme-blue-500 text-white hover:bg-supreme-blue-700",
+        primary: "bg-supreme-blue-600 text-white hover:bg-supreme-blue-700",
+        secondary: "bg-supreme-blue-500 text-white hover:bg-supreme-blue-600",
+        dark: "bg-supreme-blue-700 text-white hover:bg-supreme-blue-800"
       },
       size: {
         default: "px-8 py-[14px] h-[72px]",
@@ -2639,7 +2638,7 @@ var PaginationContent = React15.forwardRef(({ className, ...props }, ref) => /* 
   "ul",
   {
     ref,
-    className: cn("flex flex-row items-center", className),
+    className: cn("isolate flex flex-row items-center -space-x-px", className),
     ...props
   }
 ));
@@ -2660,9 +2659,9 @@ var PaginationLink = ({
         variant: "secondary",
         size
       }),
-      className,
-      "rounded-none border-x-1 border-y-2 text-neutral-800 px-5 py-2.5 text-sm font-medium hover:border-supreme-blue-300",
-      isActive && "bg-supreme-blue-50 font-medium"
+      "relative z-0 rounded-none text-neutral-800 hover:z-10 hover:border-supreme-blue-300 focus-visible:z-10",
+      isActive && "bg-supreme-blue-50 text-neutral-900 relative z-10",
+      className
     ),
     ...props
   }
@@ -2675,8 +2674,8 @@ var PaginationPrevious = ({
   PaginationLink,
   {
     "aria-label": "Go to previous page",
-    size: "default",
-    className: cn("!rounded-l-lg !border-l-2", className),
+    size: "icon",
+    className: cn("rounded-l-lg", className),
     ...props,
     children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react2.ChevronLeft, { className: "h-4 w-4" })
   }
@@ -2689,8 +2688,8 @@ var PaginationNext = ({
   PaginationLink,
   {
     "aria-label": "Go to next page",
-    size: "default",
-    className: cn("!rounded-r-lg !border-r-2", className),
+    size: "icon",
+    className: cn("rounded-r-lg", className),
     ...props,
     children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react2.ChevronRight, { className: "h-4 w-4" })
   }
@@ -2703,7 +2702,10 @@ var PaginationEllipsis = ({
   "span",
   {
     "aria-hidden": true,
-    className: cn("flex h-10 w-10 items-center justify-center border-x-1 border-y-2 border-neutral-200", className),
+    className: cn(
+      "flex h-10 w-10 items-center justify-center rounded-none border border-[#D4D4D4] bg-white text-[#737373]",
+      className
+    ),
     ...props,
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_lucide_react2.MoreHorizontal, { className: "h-4 w-4" }),
@@ -2714,11 +2716,35 @@ var PaginationEllipsis = ({
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
 // src/components/ui/persona.tsx
-var React16 = __toESM(require("react"), 1);
+var React17 = __toESM(require("react"), 1);
 var import_lucide_react3 = require("lucide-react");
+var import_outline8 = require("@heroicons/react/24/outline");
 var import_class_variance_authority5 = require("class-variance-authority");
+
+// src/components/ui/popover.tsx
+var React16 = __toESM(require("react"), 1);
+var PopoverPrimitive = __toESM(require("@radix-ui/react-popover"), 1);
 var import_jsx_runtime16 = require("react/jsx-runtime");
-var UserIcon = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+var Popover = PopoverPrimitive.Root;
+var PopoverTrigger = PopoverPrimitive.Trigger;
+var PopoverContent = React16.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(PopoverPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+  PopoverPrimitive.Content,
+  {
+    ref,
+    align,
+    sideOffset,
+    className: cn(
+      "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    ),
+    ...props
+  }
+) }));
+PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+
+// src/components/ui/persona.tsx
+var import_jsx_runtime17 = require("react/jsx-runtime");
+var UserIcon = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
   "svg",
   {
     width: "21",
@@ -2728,7 +2754,7 @@ var UserIcon = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runti
     xmlns: "http://www.w3.org/2000/svg",
     className,
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
       "path",
       {
         d: "M4.48467 16.6946C5.03216 15.4047 6.31043 14.5 7.8 14.5H13.2C14.6896 14.5 15.9678 15.4047 16.5153 16.6946M14.1 7.75C14.1 9.73822 12.4882 11.35 10.5 11.35C8.51177 11.35 6.9 9.73822 6.9 7.75C6.9 5.76177 8.51177 4.15 10.5 4.15C12.4882 4.15 14.1 5.76177 14.1 7.75ZM19.5 10C19.5 14.9706 15.4706 19 10.5 19C5.52944 19 1.5 14.9706 1.5 10C1.5 5.02944 5.52944 1 10.5 1C15.4706 1 19.5 5.02944 19.5 10Z",
@@ -2741,18 +2767,18 @@ var UserIcon = ({ className, ...props }) => /* @__PURE__ */ (0, import_jsx_runti
   }
 );
 var personaVariants = (0, import_class_variance_authority5.cva)(
-  "inline-flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  "inline-flex w-full items-center justify-between gap-3 rounded-[8px] border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "bg-supreme-blue-50 border-neutral-300 text-supreme-blue-800 hover:bg-supreme-blue-100 hover:border-supreme-blue-800",
-        selected: "bg-supreme-blue-50 border-supreme-blue-800 text-supreme-blue-800",
-        outline: "bg-white border-neutral-300 text-supreme-blue-800 hover:border-supreme-blue-800"
+        default: "bg-[#4136D4]/5 border-[#D4D4D4] text-[#272080] hover:border-supreme-blue-500",
+        selected: "bg-[#EDEBFD] border-[#272080] text-[#272080]",
+        outline: "bg-white border-[#D4D4D4] text-[#737373] hover:text-[#272080] hover:border-[#272080]"
       },
       size: {
-        default: "w-[364px] h-8 px-4 py-2",
-        sm: "h-8 px-3 py-1.5 text-sm",
-        lg: "h-12 px-6 py-3 text-base"
+        default: "w-[364px] h-10 px-6 py-2",
+        sm: "w-[364px] h-8 px-4 py-1.5 text-sm",
+        lg: "w-[364px] h-12 px-6 py-3 text-base"
       }
     },
     defaultVariants: {
@@ -2777,40 +2803,121 @@ var personaProfileVariants = (0, import_class_variance_authority5.cva)(
     }
   }
 );
-var Persona = React16.forwardRef(
+var Persona = React17.forwardRef(
   ({
     className,
     variant,
     size,
-    personas = [],
+    personas: personasProp,
+    defaultPersonas = [],
+    options: optionsProp,
+    onPersonasChange,
+    closeOnSelect = false,
     placeholder = "Select personas...",
     showLeftIcon = true,
     showRightIcon = true,
-    onClick,
     ...props
   }, ref) => {
-    const displayText = personas.length > 0 ? personas.join(" + ") : placeholder;
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
-      "div",
-      {
-        className: cn(
-          personaVariants({ variant, size, className }),
-          onClick && "cursor-pointer hover:shadow-sm"
-        ),
-        ref,
-        onClick,
-        ...props,
-        children: [
-          showLeftIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(UserIcon, { className: "h-4 w-4 text-[#272080] flex-shrink-0" }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "flex-1 text-sm font-medium truncate", children: displayText }),
-          showRightIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_react3.ChevronDown, { className: "h-4 w-4 text-[#272080] flex-shrink-0" })
-        ]
-      }
+    const [open, setOpen] = React17.useState(false);
+    const isControlled = personasProp !== void 0 && typeof onPersonasChange === "function";
+    const [internalPersonas, setInternalPersonas] = React17.useState(
+      () => personasProp !== void 0 && !isControlled ? personasProp : defaultPersonas
     );
+    React17.useEffect(() => {
+      if (!isControlled && personasProp !== void 0) {
+        setInternalPersonas(personasProp);
+      }
+    }, [isControlled, personasProp?.join("\0")]);
+    const personas = isControlled ? personasProp : internalPersonas;
+    const options = React17.useMemo(() => {
+      const base = optionsProp ?? personasProp ?? defaultPersonas;
+      return Array.from(new Set(base));
+    }, [optionsProp, personasProp, defaultPersonas]);
+    const displayText = personas.length > 0 ? personas.join(" + ") : placeholder;
+    const togglePersona = (label) => {
+      const isSelected = personas.includes(label);
+      const next = isSelected ? personas.filter((p) => p !== label) : [...personas, label];
+      if (!isControlled) {
+        setInternalPersonas(next);
+      }
+      onPersonasChange?.(next);
+      if (closeOnSelect) {
+        setOpen(false);
+      }
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(Popover, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+        "button",
+        {
+          ref,
+          type: "button",
+          className: cn(
+            personaVariants({ variant, size, className }),
+            "cursor-pointer hover:shadow-sm"
+          ),
+          "aria-haspopup": "listbox",
+          "aria-expanded": open,
+          ...props,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("span", { className: "flex min-w-0 flex-1 items-center gap-3", children: [
+              showLeftIcon && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(UserIcon, { className: "h-5 w-5 shrink-0 text-[#4136D4]" }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+                "span",
+                {
+                  className: cn(
+                    "truncate text-sm font-medium",
+                    personas.length > 0 ? "text-neutral-900" : "text-neutral-500"
+                  ),
+                  children: displayText
+                }
+              )
+            ] }),
+            showRightIcon && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+              import_lucide_react3.ChevronDown,
+              {
+                className: cn(
+                  "h-4 w-4 shrink-0 text-[#272080] transition-transform duration-200",
+                  open ? "rotate-180" : "rotate-0"
+                )
+              }
+            )
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+        PopoverContent,
+        {
+          className: "w-[364px] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
+          align: "start",
+          children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: cn("flex max-h-72 flex-col gap-2 overflow-y-auto p-2", options.length === 0 && "p-0"), children: options.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "px-2 py-3 text-center text-sm text-neutral-500", children: "No personas available" }) : options.map((option) => {
+            const isSelected = personas.includes(option);
+            return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
+              "button",
+              {
+                type: "button",
+                onClick: () => togglePersona(option),
+                className: cn(
+                  "flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-500 focus-visible:ring-offset-0",
+                  isSelected ? "bg-supreme-blue-50 text-neutral-900" : "text-neutral-700 hover:bg-slate-50"
+                ),
+                role: "option",
+                "aria-selected": isSelected,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("span", { className: "truncate text-sm font-medium", children: option }),
+                  isSelected && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(import_outline8.CheckIcon, { className: "h-4 w-4 shrink-0 text-neutral-900" })
+                ]
+              },
+              option
+            );
+          }) })
+        }
+      )
+    ] });
   }
 );
 Persona.displayName = "Persona";
-var PersonaProfile = React16.forwardRef(
+var PersonaProfile = React17.forwardRef(
   ({
     className,
     variant,
@@ -2822,26 +2929,26 @@ var PersonaProfile = React16.forwardRef(
     tags = [],
     ...props
   }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)(
       "div",
       {
         className: cn(personaProfileVariants({ variant, className })),
         ref,
         ...props,
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-1 gap-3 items-start", children: [
-            avatar || /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "bg-supreme-blue-700 overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "font-sans font-normal leading-7 text-lg text-white text-center tracking-normal whitespace-nowrap", children: avatarFallback }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-1 flex-col gap-1.5 items-start min-h-0 min-w-0", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "font-sans font-semibold leading-6 text-neutral-900 text-base w-full", children: name }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-sm w-full", children: title }),
-              /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex gap-[5px] items-center w-full", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex flex-1 gap-[5px] items-center min-h-0 min-w-0", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_react3.Building2, { className: "size-3.5 text-neutral-900" }),
-                /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-xs", children: organization })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-1 gap-3 items-start", children: [
+            avatar || /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "bg-[#4136D4] overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "font-sans font-normal leading-7 text-lg text-white text-center tracking-normal whitespace-nowrap", children: avatarFallback }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-1 flex-col gap-1.5 items-start min-h-0 min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "font-sans font-semibold leading-6 text-neutral-900 text-base w-full", children: name }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-sm w-full", children: title }),
+              /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex gap-[5px] items-center w-full", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "flex flex-1 gap-[5px] items-center min-h-0 min-w-0", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(import_lucide_react3.Building2, { className: "size-3.5 text-neutral-900" }),
+                /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-xs", children: organization })
               ] }) }),
-              tags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex flex-wrap gap-1 items-start w-full", children: tags.map((tag, index) => /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Badge, { variant: "default", className: "bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full", children: tag }, index)) })
+              tags.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: "flex flex-wrap gap-1 items-start w-full", children: tags.map((tag, index) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(Badge, { variant: "default", className: "bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full", children: tag }, index)) })
             ] })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: cn("relative shrink-0 size-6", variant === "selected" ? "opacity-100" : "opacity-0"), children: variant === "selected" && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_lucide_react3.CheckCircle, { className: "size-6 text-supreme-blue-700" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: cn("relative shrink-0 size-6", variant === "selected" ? "opacity-100" : "opacity-0"), children: variant === "selected" && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(import_lucide_react3.CheckCircle, { className: "size-6 text-supreme-blue-700" }) })
         ]
       }
     );
@@ -2849,31 +2956,10 @@ var PersonaProfile = React16.forwardRef(
 );
 PersonaProfile.displayName = "PersonaProfile";
 
-// src/components/ui/popover.tsx
-var React17 = __toESM(require("react"), 1);
-var PopoverPrimitive = __toESM(require("@radix-ui/react-popover"), 1);
-var import_jsx_runtime17 = require("react/jsx-runtime");
-var Popover = PopoverPrimitive.Root;
-var PopoverTrigger = PopoverPrimitive.Trigger;
-var PopoverContent = React17.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(PopoverPrimitive.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
-  PopoverPrimitive.Content,
-  {
-    ref,
-    align,
-    sideOffset,
-    className: cn(
-      "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
-    ),
-    ...props
-  }
-) }));
-PopoverContent.displayName = PopoverPrimitive.Content.displayName;
-
 // src/components/ui/sidebar.tsx
 var React19 = __toESM(require("react"), 1);
 var import_react_router_dom = require("react-router-dom");
-var import_outline8 = require("@heroicons/react/24/outline");
+var import_outline9 = require("@heroicons/react/24/outline");
 
 // src/components/ui/Icons/AIIcon.tsx
 var import_jsx_runtime18 = require("react/jsx-runtime");
@@ -3309,7 +3395,7 @@ var Sidebar = React19.forwardRef(
                 ),
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
-                    import_outline8.ChevronDownIcon,
+                    import_outline9.ChevronDownIcon,
                     {
                       className: cn(
                         "w-4 h-4 transition-transform duration-500 ease-in-out flex-shrink-0",
@@ -3452,7 +3538,7 @@ RangeSlider.displayName = "RangeSlider";
 
 // src/components/ui/table.tsx
 var React21 = __toESM(require("react"), 1);
-var import_outline9 = require("@heroicons/react/24/outline");
+var import_outline10 = require("@heroicons/react/24/outline");
 var import_jsx_runtime37 = require("react/jsx-runtime");
 var getScoreColor = (score) => {
   if (1 <= score && score <= 10) return "bg-[#FF8F8F] text-neutral-800";
@@ -3573,7 +3659,7 @@ var TableHeaderCell = React21.forwardRef(({ className, showCheckbox = true, righ
         }
       ),
       showText && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "font-semibold leading-4 relative shrink-0 text-neutral-800 text-sm", children: showText }),
-      rightIcon && (typeof rightIcon === "boolean" ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline9.ArrowDownIcon, { className: "h-4 w-4 relative shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "relative shrink-0 flex items-center justify-center", children: rightIcon }))
+      rightIcon && (typeof rightIcon === "boolean" ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline10.ArrowDownIcon, { className: "h-4 w-4 relative shrink-0" }) : /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "relative shrink-0 flex items-center justify-center", children: rightIcon }))
     ]
   }
 ));
@@ -3749,12 +3835,12 @@ var TableCellBenchmark = React21.forwardRef(({
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "flex flex-1 gap-2 items-center min-h-px min-w-px shrink-0", children: [
-            leftIcon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "flex gap-6 items-end relative shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: leftIcon === true ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline9.GlobeAltIcon, { className: "size-4 text-neutral-900" }) : leftIcon ? leftIcon : null }) }),
+            leftIcon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "flex gap-6 items-end relative shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: leftIcon === true ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline10.GlobeAltIcon, { className: "size-4 text-neutral-900" }) : leftIcon ? leftIcon : null }) }),
             children ? children : /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "flex flex-1 flex-col gap-1 items-start leading-4 text-sm whitespace-pre-wrap", children: [
               /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "font-medium relative shrink-0 text-supreme-blue-700 w-full", children: "Company Name Here" }),
               descriptionText && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "font-normal relative shrink-0 text-neutral-500 w-full", children: descriptionText })
             ] }),
-            rightIcon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: rightIcon === true ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline9.LinkIcon, { className: "size-4 text-supreme-blue-700" }) : rightIcon ? rightIcon : null })
+            rightIcon !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: rightIcon === true ? /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline10.LinkIcon, { className: "size-4 text-supreme-blue-700" }) : rightIcon ? rightIcon : null })
           ] })
         ] })
       }
@@ -3778,12 +3864,12 @@ var TableCellBenchmark = React21.forwardRef(({
           }
         ),
         /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "flex flex-1 gap-2 items-center min-h-px min-w-px shrink-0", children: [
-          leftIcon === true && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline9.GlobeAltIcon, { className: "size-4 text-neutral-900" }) }),
+          leftIcon === true && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline10.GlobeAltIcon, { className: "size-4 text-neutral-900" }) }),
           children ? children : /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)("div", { className: "flex flex-1 flex-col gap-1 items-start leading-4 text-sm whitespace-pre-wrap", children: [
             /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "font-medium relative shrink-0 text-supreme-blue-700 w-full", children: "Company Name Here" }),
             descriptionText && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("p", { className: "font-normal relative shrink-0 text-neutral-500 w-full", children: descriptionText })
           ] }),
-          rightIcon === true && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline9.LinkIcon, { className: "size-4 text-supreme-blue-700" }) })
+          rightIcon === true && /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className: "overflow-clip relative shrink-0 size-4", children: /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(import_outline10.LinkIcon, { className: "size-4 text-supreme-blue-700" }) })
         ] })
       ] })
     }
@@ -4088,7 +4174,7 @@ Textarea.displayName = "Textarea";
 var React24 = __toESM(require("react"), 1);
 var ToastPrimitives = __toESM(require("@radix-ui/react-toast"), 1);
 var import_class_variance_authority7 = require("class-variance-authority");
-var import_outline10 = require("@heroicons/react/24/outline");
+var import_outline11 = require("@heroicons/react/24/outline");
 var import_jsx_runtime40 = require("react/jsx-runtime");
 var ToastProvider = ToastPrimitives.Provider;
 var toastVariants = (0, import_class_variance_authority7.cva)(
@@ -4173,7 +4259,7 @@ var ToastIcon = React24.forwardRef(({ className, variant, size, children, ...pro
       ),
       ...props,
       children: children ?? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-        import_outline10.InformationCircleIcon,
+        import_outline11.InformationCircleIcon,
         {
           className: cn(
             "h-6 w-6 shrink-0",
@@ -4243,7 +4329,7 @@ var ToastClose = React24.forwardRef(({ className, variant, size, ...props }, ref
       "toast-close": "",
       ...props,
       children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-        import_outline10.XMarkIcon,
+        import_outline11.XMarkIcon,
         {
           className: cn(
             "h-6 w-6",
@@ -4604,8 +4690,8 @@ TooltipContent.displayName = TooltipPrimitive.Content.displayName;
 
 // src/components/ui/curie-ai-chat-prompt.tsx
 var React28 = __toESM(require("react"), 1);
-var import_outline11 = require("@heroicons/react/24/outline");
 var import_outline12 = require("@heroicons/react/24/outline");
+var import_outline13 = require("@heroicons/react/24/outline");
 var import_jsx_runtime44 = require("react/jsx-runtime");
 var CurieAIChatPrompt = React28.forwardRef(
   ({
@@ -4684,7 +4770,7 @@ var CurieAIChatPrompt = React28.forwardRef(
                     onClick: onAdd,
                     disabled,
                     size: "icon",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline11.PlusIcon, { className: "w-6 h-6 text-black" })
+                    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline12.PlusIcon, { className: "w-6 h-6 text-black" })
                   }
                 ),
                 /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "relative", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
@@ -4697,7 +4783,7 @@ var CurieAIChatPrompt = React28.forwardRef(
                     children: [
                       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(PersonaIcon, { size: 24 }),
                       /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-sm font-medium text-black", children: selectedPersona }),
-                      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline11.ChevronDownIcon, { className: "w-4 h-4 text-black" })
+                      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline12.ChevronDownIcon, { className: "w-4 h-4 text-black" })
                     ]
                   }
                 ) })
@@ -4708,7 +4794,7 @@ var CurieAIChatPrompt = React28.forwardRef(
                   onClick: handleSend,
                   size: "icon",
                   disabled: disabled || !message.trim(),
-                  children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline12.ArrowUpIcon, { className: "w-6 h-6 text-white" })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(import_outline13.ArrowUpIcon, { className: "w-6 h-6 text-white" })
                 }
               )
             ] })
@@ -4763,7 +4849,7 @@ Footer.displayName = "Footer";
 
 // src/components/ui/dropdown.tsx
 var React30 = __toESM(require("react"), 1);
-var import_outline13 = require("@heroicons/react/24/outline");
+var import_outline14 = require("@heroicons/react/24/outline");
 var import_jsx_runtime46 = require("react/jsx-runtime");
 var renderOptionIcon = (option, className) => {
   if (option.icon) {
@@ -4865,7 +4951,7 @@ var Dropdown = React30.forwardRef(
           /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "truncate text-sm font-medium", children: option.label }),
           renderOptionMeta && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "ml-auto truncate text-xs text-neutral-500", children: renderOptionMeta(option) })
         ] }),
-        isSelected && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline13.CheckIcon, { className: "h-4 w-4 shrink-0 text-neutral-900" })
+        isSelected && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline14.CheckIcon, { className: "h-4 w-4 shrink-0 text-neutral-900" })
       ] });
     };
     return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
@@ -4898,7 +4984,7 @@ var Dropdown = React30.forwardRef(
                   renderOptionIcon(selectedOption, "h-4 w-4 shrink-0"),
                   /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "truncate font-medium text-neutral-900", children: selectedOption.label })
                 ] }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "truncate text-neutral-500", children: triggerPlaceholder }) }),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline13.ChevronUpDownIcon, { className: "h-5 w-5 text-neutral-500" })
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline14.ChevronUpDownIcon, { className: "h-5 w-5 text-neutral-500" })
               ]
             }
           ) }),
@@ -4917,7 +5003,7 @@ var Dropdown = React30.forwardRef(
                     placeholder: placeholder ?? searchPlaceholder,
                     value: currentSearch,
                     onChange: handleSearchChange,
-                    leftIcon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline13.MagnifyingGlassIcon, {}),
+                    leftIcon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(import_outline14.MagnifyingGlassIcon, {}),
                     className: "py-0 text-sm",
                     "aria-label": searchPlaceholder,
                     autoFocus: true

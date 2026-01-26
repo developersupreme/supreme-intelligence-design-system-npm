@@ -9,12 +9,12 @@ const bannerVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
+          "bg-supreme-blue-500 text-white hover:bg-supreme-blue-700",
         primary:
-          "bg-gradient-to-b from-supreme-blue-600 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
+          "bg-supreme-blue-600 text-white hover:bg-supreme-blue-700",
         secondary:
-          "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-600 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        dark: "bg-gradient-to-b from-supreme-blue-700 to-supreme-blue-800 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
+          "bg-supreme-blue-500 text-white hover:bg-supreme-blue-600",
+        dark: "bg-supreme-blue-700 text-white hover:bg-supreme-blue-800",
       },
       size: {
         default: "px-8 py-[14px] h-[72px]",

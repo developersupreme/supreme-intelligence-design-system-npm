@@ -135,29 +135,27 @@ interface DragDropProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 declare const DragDrop: React.ForwardRefExoticComponent<DragDropProps & React.RefAttributes<HTMLDivElement>>;
 
-interface StepperIndicatorProps {
-    stepNumber?: number;
-    step?: "active" | "default" | "done";
+type StepperStepState = "active" | "default" | "done";
+type StepperStep = {
+    title: React.ReactNode;
+    step: StepperStepState;
+    href?: string;
+    onClick?: () => void;
+};
+interface StepperProps extends Omit<React.ComponentPropsWithoutRef<"nav">, "children"> {
+    steps: StepperStep[];
+    /**
+     * Shows the horizontal divider line under the stepper.
+     * @default true
+     */
+    showDivider?: boolean;
+    /**
+     * Custom separator between steps.
+     * Defaults to a chevron icon.
+     */
+    separator?: React.ReactNode;
 }
-declare const StepperIndicator: React.ForwardRefExoticComponent<StepperIndicatorProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
-interface StepperItemProps extends React.HTMLAttributes<HTMLDivElement> {
-    stepNumber?: number;
-    title: string;
-    step?: "active" | "default" | "done";
-    showLeftConnector?: boolean;
-    showRightConnector?: boolean;
-    leftConnectorColor?: string;
-    rightConnectorColor?: string;
-}
-declare const StepperItem: React.ForwardRefExoticComponent<StepperItemProps & React.RefAttributes<HTMLDivElement>>;
-interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
-    steps: Array<{
-        stepNumber?: number;
-        title: string;
-        step: "active" | "default" | "done";
-    }>;
-}
-declare const Stepper: React.ForwardRefExoticComponent<StepperProps & React.RefAttributes<HTMLDivElement>>;
+declare const Stepper: React.ForwardRefExoticComponent<StepperProps & React.RefAttributes<HTMLElement>>;
 
 declare function cn(...inputs: ClassValue[]): string;
 
@@ -204,4 +202,4 @@ declare function useToast(): {
     toasts: Toast[];
 };
 
-export { AuthFormComponent as AuthForm, AuthFormActions, AuthFormBody, AuthFormDescription, AuthFormDivider, type AuthFormDividerProps, AuthFormFooter, AuthFormHeader, AuthFormPrimary, type AuthFormProps, AuthFormSubtitle, AuthFormTitle, CreditOption, type CreditOptionProps, CreditSelector, type CreditSelectorProps, Credits, type CreditsProps, Divider, type DividerProps, DragDrop, type DragDropProps, PageHeading, type PageHeadingProps, Quote, type QuoteProps, RadioGroup, RadioGroupItem, Stepper, StepperIndicator, type StepperIndicatorProps, StepperItem, type StepperItemProps, type StepperProps, ToastActionElement, ToastProps, cn, dividerVariants, reducer, toast, useIsMobile, useToast };
+export { AuthFormComponent as AuthForm, AuthFormActions, AuthFormBody, AuthFormDescription, AuthFormDivider, type AuthFormDividerProps, AuthFormFooter, AuthFormHeader, AuthFormPrimary, type AuthFormProps, AuthFormSubtitle, AuthFormTitle, CreditOption, type CreditOptionProps, CreditSelector, type CreditSelectorProps, Credits, type CreditsProps, Divider, type DividerProps, DragDrop, type DragDropProps, PageHeading, type PageHeadingProps, Quote, type QuoteProps, RadioGroup, RadioGroupItem, Stepper, type StepperProps, type StepperStep, type StepperStepState, ToastActionElement, ToastProps, cn, dividerVariants, reducer, toast, useIsMobile, useToast };

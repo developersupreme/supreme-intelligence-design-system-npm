@@ -123,7 +123,7 @@ declare const BreadcrumbEllipsis: {
 };
 
 declare const buttonVariants: (props?: {
-    variant?: "link" | "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "ghost" | "outline";
+    variant?: "link" | "primary" | "secondary" | "secondary-color" | "secondary-blue" | "ghost" | "outline";
     size?: "default" | "md" | "lg" | "xl" | "icon" | "icon-sm" | "icon-lg";
 } & class_variance_authority_types.ClassProp) => string;
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
@@ -131,7 +131,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, Var
      * The variant style of the button.
      * @default "primary"
      */
-    variant?: "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost" | "outline";
+    variant?: "primary" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost" | "outline";
     /**
      * The size of the button.
      * @default "default"
@@ -379,7 +379,7 @@ declare const personaVariants: (props?: {
 declare const personaProfileVariants: (props?: {
     variant?: "selected" | "default" | "ghost" | "hover";
 } & class_variance_authority_types.ClassProp) => string;
-interface PersonaProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof personaVariants> {
+interface PersonaProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange">, VariantProps<typeof personaVariants> {
     /**
      * Additional CSS class names.
      */
@@ -398,13 +398,25 @@ interface PersonaProps extends React.HTMLAttributes<HTMLDivElement>, VariantProp
      * @default "default"
      */
     size?: "default" | "sm" | "lg";
+    /**
+     * Selected personas (multi-select).
+     */
     personas?: string[];
+    /**
+     * Default selected personas (uncontrolled).
+     */
+    defaultPersonas?: string[];
+    /**
+     * Available options. If omitted, falls back to `personas`.
+     */
+    options?: string[];
+    onPersonasChange?: (personas: string[]) => void;
+    closeOnSelect?: boolean;
     placeholder?: string;
     showLeftIcon?: boolean;
     showRightIcon?: boolean;
-    onClick?: () => void;
 }
-declare const Persona: React.ForwardRefExoticComponent<PersonaProps & React.RefAttributes<HTMLDivElement>>;
+declare const Persona: React.ForwardRefExoticComponent<PersonaProps & React.RefAttributes<HTMLButtonElement>>;
 interface PersonaProfileProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof personaProfileVariants> {
     /**
      * Additional CSS class names.

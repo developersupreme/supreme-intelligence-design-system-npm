@@ -303,9 +303,6 @@ const Components = () => {
                                   Primary
                                 </th>
                                 <th className="text-center p-3 font-medium">
-                                  Primary Stroke
-                                </th>
-                                <th className="text-center p-3 font-medium">
                                   Secondary
                                 </th>
                                 <th className="text-center p-3 font-medium">
@@ -331,15 +328,6 @@ const Components = () => {
                                 <td className="p-3 text-center">
                                   <Button
                                     variant="primary"
-                                    size="lg"
-                                    showIcons="both"
-                                  >
-                                    Button
-                                  </Button>
-                                </td>
-                                <td className="p-3 text-center">
-                                  <Button
-                                    variant="primary-stroke"
                                     size="lg"
                                     showIcons="both"
                                   >
@@ -396,15 +384,6 @@ const Components = () => {
                                 <td className="p-3 text-center">
                                   <Button
                                     variant="primary"
-                                    size="md"
-                                    showIcons="both"
-                                  >
-                                    Button
-                                  </Button>
-                                </td>
-                                <td className="p-3 text-center">
-                                  <Button
-                                    variant="primary-stroke"
                                     size="md"
                                     showIcons="both"
                                   >
@@ -1342,7 +1321,7 @@ const Components = () => {
                               <Avatar
                                 size="sm"
                                 fallback="AA"
-                                className="bg-supreme-blue-900  text-primary-foreground"
+                                className="bg-[#4136D4]  text-primary-foreground"
                               />
                               <span className="text-xs text-muted-foreground">
                                 Small
@@ -1352,7 +1331,7 @@ const Components = () => {
                               <Avatar
                                 size="md"
                                 fallback="AA"
-                                className="bg-supreme-blue-900 text-primary-foreground"
+                                className="bg-[#4136D4] text-primary-foreground"
                               />
                               <span className="text-xs text-muted-foreground">
                                 Mid
@@ -1362,7 +1341,7 @@ const Components = () => {
                               <Avatar
                                 size="lg"
                                 fallback="AA"
-                                className="bg-supreme-blue-900 text-primary-foreground"
+                                className="bg-[#4136D4] text-primary-foreground"
                               />
                               <span className="text-xs text-muted-foreground">
                                 Large
@@ -1532,7 +1511,14 @@ const Components = () => {
                       <ContentBoxTitle>Stepper Component</ContentBoxTitle>
                     </ContentBoxHeader>
                     <ContentBoxContent>
-                      <Stepper steps={[{ title: "Step 1", step: "done", stepNumber: 1 }, { title: "Step 2", step: "done", stepNumber: 2 }, { title: "Step 3", step: "active", stepNumber: 3 }, { title: "Step 4", step: "default", stepNumber: 4 }]} />
+                      <Stepper
+                        steps={[
+                          { title: "Platform", step: "done" },
+                          { title: "Basics", step: "done" },
+                          { title: "Connect", step: "active" },
+                          { title: "Review", step: "default" },
+                        ]}
+                      />
                     </ContentBoxContent>
                   </ContentBox>
                 </section>

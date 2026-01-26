@@ -1,167 +1,114 @@
 import * as React from "react";
-import { CheckIcon } from "@heroicons/react/24/outline";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
 import { cn } from "@/lib/utils";
 
-export interface StepperIndicatorProps {
-  stepNumber?: number;
-  step?: "active" | "default" | "done";
+export type StepperStepState = "active" | "default" | "done";
+
+export type StepperStep = {
+  title: React.ReactNode;
+  step: StepperStepState;
+  href?: string;
+  onClick?: () => void;
+};
+
+export interface StepperProps
+  extends Omit<React.ComponentPropsWithoutRef<"nav">, "children"> {
+  steps: StepperStep[];
+  /**
+   * Shows the horizontal divider line under the stepper.
+   * @default true
+   */
+  showDivider?: boolean;
+  /**
+   * Custom separator between steps.
+   * Defaults to a chevron icon.
+   */
+  separator?: React.ReactNode;
 }
 
-const StepperIndicator = React.forwardRef<
-  HTMLDivElement,
-  StepperIndicatorProps & React.HTMLAttributes<HTMLDivElement>
->(({ className, stepNumber, step = "default", ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "relative flex flex-col items-center justify-center rounded-full shrink-0 size-[30px]",
-        step === "done" &&
-          "bg-indigo-950 border-2 !border-white border-shadow-sm p-[6px]",
-        step === "default" &&
-          "bg-indigo-100 border-2 !border-indigo-300 border-shadow-sm p-[10px]",
-        step === "active" &&
-          "bg-supreme-blue-600 border-2 !border-white text-white shadow-lg shadow-blue-600/25 ring-4 ring-blue-100 p-[10px]",
-        className
-      )}
-      {...props}
-    >
-      {step === "active" && (
-        <div className="absolute inset-0 rounded-full bg-supreme-blue-600 animate-ping opacity-20"></div>
-      )}
-      {step === "done" ? (
-        <CheckIcon className="w-6 h-6 text-white relative z-10" />
-      ) : (
-        <p
-          className={cn(
-            "font-bold leading-4 text-xs text-center w-full whitespace-pre-wrap relative z-10",
-            step === "default" && "text-indigo-400",
-            step === "active" && "text-white"
-          )}
-        >
-          {stepNumber || 1}
-        </p>
-      )}
-    </div>
-  );
-});
-StepperIndicator.displayName = "StepperIndicator";
+const Stepper = React.forwardRef<React.ElementRef<"nav">, StepperProps>(
+  ({ className, steps, showDivider = true, separator, ...props }, ref) => {
+    const renderedSeparator =
+      separator ?? (
+        <ChevronRightIcon
+          className="h-4 w-4 text-neutral-400"
+          aria-hidden="true"
+        />
+      );
 
-export interface StepperItemProps extends React.HTMLAttributes<HTMLDivElement> {
-  stepNumber?: number;
-  title: string;
-  step?: "active" | "default" | "done";
-  showLeftConnector?: boolean;
-  showRightConnector?: boolean;
-  leftConnectorColor?: string;
-  rightConnectorColor?: string;
-}
-
-const StepperItem = React.forwardRef<HTMLDivElement, StepperItemProps>(
-  ({ className, stepNumber, title, step = "default", showLeftConnector = false, showRightConnector = false, leftConnectorColor, rightConnectorColor, ...props }, ref) => {
     return (
-      <div
+      <nav
         ref={ref}
-        className={cn(
-          "flex flex-col gap-2 items-center w-[150px] relative",
-          className
-        )}
+        aria-label="Progress"
+        className={cn("w-full", className)}
         {...props}
       >
-        {showLeftConnector && (
-          <div
-            className={cn("h-[3px] absolute top-[15px] left-0 z-0", leftConnectorColor)}
-            style={{ width: "60px" }}
-          />
-        )}
-        <StepperIndicator stepNumber={stepNumber} step={step} />
-        {showRightConnector && (
-          <div
-            className={cn("h-[3px] absolute top-[15px] right-0 z-0", rightConnectorColor)}
-            style={{ width: "60px" }}
-          />
-        )}
-        <p
-          className={cn(
-            "leading-4 text-xs text-center tracking-normal truncate",
-            step === "done" && "text-neutral-800 font-bold",
-            step === "default" && "text-neutral-500 font-bold",
-            step === "active" && "text-supreme-blue-400 font-bold"
-          )}
-        >
-          {title}
-        </p>
-      </div>
-    );
-  }
-);
-StepperItem.displayName = "StepperItem";
+        <ol className="flex flex-wrap items-center gap-2 text-sm">
+          {steps.map((step, index) => {
+            const isActive = step.step === "active";
+            const isDone = step.step === "done";
+            const isUpcoming = step.step === "default";
 
-export interface StepperProps extends React.HTMLAttributes<HTMLDivElement> {
-  steps: Array<{
-    stepNumber?: number;
-    title: string;
-    step: "active" | "default" | "done";
-  }>;
-}
+            const baseClasses =
+              "inline-flex items-center rounded-md px-1 py-0.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-200";
 
-const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
-  ({ className, steps, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn("flex items-center relative", className)}
-        {...props}
-      >
-        {steps.map((stepData, index) => {
-          // Calculate left connector color
-          const prevStep = index > 0 ? steps[index - 1] : null;
-          let leftConnectorColor = "";
-          if (prevStep) {
-            if (prevStep.step === "done" && stepData.step === "done") {
-              leftConnectorColor = "bg-indigo-950";
-            } else if (prevStep.step === "done" && stepData.step === "active") {
-              leftConnectorColor = "bg-gradient-to-r from-indigo-700 to-indigo-500";
-            } else if (prevStep.step === "done" || prevStep.step === "active") {
-              leftConnectorColor = "bg-gradient-to-r from-indigo-300 to-slate-50";
-            } else {
-              leftConnectorColor = "bg-supreme-blue-50";
-            }
-          }
-          
-          // Calculate right connector color
-          const nextStep = index < steps.length - 1 ? steps[index + 1] : null;
-          let rightConnectorColor = "";
-          if (nextStep) {
-            if (stepData.step === "done" && nextStep.step === "done") {
-              rightConnectorColor = "bg-indigo-950";
-            } else if (stepData.step === "done" && nextStep.step === "active") {
-              rightConnectorColor = "bg-gradient-to-r from-indigo-950 to-indigo-700";
-            } else if (stepData.step === "done" || stepData.step === "active") {
-              rightConnectorColor = "bg-gradient-to-r from-indigo-500 to-indigo-300";
-            } else {
-              rightConnectorColor = "bg-supreme-blue-50";
-            }
-          }
-          
-          return (
-            <StepperItem
-              key={index}
-              stepNumber={stepData.stepNumber}
-              title={stepData.title}
-              step={stepData.step}
-              showLeftConnector={index > 0}
-              showRightConnector={index < steps.length - 1}
-              leftConnectorColor={leftConnectorColor}
-              rightConnectorColor={rightConnectorColor}
-            />
-          );
-        })}
-      </div>
+            const stepClasses = cn(
+              baseClasses,
+              isActive && "text-supreme-blue-600 font-medium",
+              isDone && "text-neutral-600 hover:text-supreme-blue-600",
+              isUpcoming && "text-neutral-400"
+            );
+
+            const content = (
+              <span className="min-w-0 truncate">{step.title}</span>
+            );
+
+            const node = step.href ? (
+              <a
+                href={step.href}
+                className={stepClasses}
+                aria-current={isActive ? "step" : undefined}
+              >
+                {content}
+              </a>
+            ) : step.onClick ? (
+              <button
+                type="button"
+                className={cn(stepClasses, isUpcoming && "pointer-events-none")}
+                onClick={isUpcoming ? undefined : step.onClick}
+                aria-current={isActive ? "step" : undefined}
+                aria-disabled={isUpcoming ? true : undefined}
+              >
+                {content}
+              </button>
+            ) : (
+              <span
+                className={stepClasses}
+                aria-current={isActive ? "step" : undefined}
+              >
+                {content}
+              </span>
+            );
+
+            return (
+              <li key={index} className="flex min-w-0 items-center gap-2">
+                {node}
+                {index < steps.length - 1 && (
+                  <span aria-hidden="true" className="shrink-0">
+                    {renderedSeparator}
+                  </span>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+
+        {showDivider && <div className="mt-4 h-px w-full bg-neutral-200" />}
+      </nav>
     );
   }
 );
 Stepper.displayName = "Stepper";
 
-export { Stepper, StepperItem, StepperIndicator };
+export { Stepper };
 

@@ -1,9 +1,11 @@
 import * as React from "react"
 import { ChevronDown, Building2, CheckCircle } from "lucide-react"
+import { CheckIcon } from "@heroicons/react/24/outline"
 import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 
 const UserIcon = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
   <svg 
@@ -26,18 +28,21 @@ const UserIcon = ({ className, ...props }: React.SVGProps<SVGSVGElement>) => (
 )
 
 const personaVariants = cva(
-  "inline-flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  "inline-flex w-full items-center justify-between gap-3 rounded-[8px] border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "bg-supreme-blue-50 border-neutral-300 text-supreme-blue-800 hover:bg-supreme-blue-100 hover:border-supreme-blue-800",
-        selected: "bg-supreme-blue-50 border-supreme-blue-800 text-supreme-blue-800",
-        outline: "bg-white border-neutral-300 text-supreme-blue-800 hover:border-supreme-blue-800",
+        default:
+          "bg-[#4136D4]/5 border-[#D4D4D4] text-[#272080] hover:border-supreme-blue-500",
+        selected:
+          "bg-[#EDEBFD] border-[#272080] text-[#272080]",
+        outline:
+          "bg-white border-[#D4D4D4] text-[#737373] hover:text-[#272080] hover:border-[#272080]",
       },
       size: {
-        default: "w-[364px] h-8 px-4 py-2",
-        sm: "h-8 px-3 py-1.5 text-sm",
-        lg: "h-12 px-6 py-3 text-base",
+        default: "w-[364px] h-10 px-6 py-2",
+        sm: "w-[364px] h-8 px-4 py-1.5 text-sm",
+        lg: "w-[364px] h-12 px-6 py-3 text-base",
       },
     },
     defaultVariants: {
@@ -65,7 +70,7 @@ const personaProfileVariants = cva(
 )
 
 export interface PersonaProps
-  extends React.HTMLAttributes<HTMLDivElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "onChange">,
     VariantProps<typeof personaVariants> {
   /**
    * Additional CSS class names.
@@ -85,49 +90,155 @@ export interface PersonaProps
    * @default "default"
    */
   size?: "default" | "sm" | "lg"
+  /**
+   * Selected personas (multi-select).
+   */
   personas?: string[]
+  /**
+   * Default selected personas (uncontrolled).
+   */
+  defaultPersonas?: string[]
+  /**
+   * Available options. If omitted, falls back to `personas`.
+   */
+  options?: string[]
+  onPersonasChange?: (personas: string[]) => void
+  closeOnSelect?: boolean
   placeholder?: string
   showLeftIcon?: boolean
   showRightIcon?: boolean
-  onClick?: () => void
 }
 
-const Persona = React.forwardRef<HTMLDivElement, PersonaProps>(
+const Persona = React.forwardRef<HTMLButtonElement, PersonaProps>(
   ({ 
     className, 
     variant, 
     size, 
-    personas = [], 
+    personas: personasProp,
+    defaultPersonas = [],
+    options: optionsProp,
+    onPersonasChange,
+    closeOnSelect = false,
     placeholder = "Select personas...",
     showLeftIcon = true,
     showRightIcon = true,
-    onClick,
     ...props 
   }, ref) => {
-    const displayText = personas.length > 0 
-      ? personas.join(" + ")
-      : placeholder
+    const [open, setOpen] = React.useState(false)
+
+    const isControlled =
+      personasProp !== undefined && typeof onPersonasChange === "function"
+
+    const [internalPersonas, setInternalPersonas] = React.useState<string[]>(
+      () => (personasProp !== undefined && !isControlled ? personasProp : defaultPersonas)
+    )
+
+    React.useEffect(() => {
+      // If caller passes `personas` without `onPersonasChange`, treat it as "default selected"
+      // and only sync when the actual content changes (not just array identity).
+      if (!isControlled && personasProp !== undefined) {
+        setInternalPersonas(personasProp)
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isControlled, personasProp?.join("\u0000")])
+
+    const personas = isControlled ? personasProp! : internalPersonas
+    const options = React.useMemo(() => {
+      const base = optionsProp ?? personasProp ?? defaultPersonas
+      // de-dupe while preserving order
+      return Array.from(new Set(base))
+    }, [optionsProp, personasProp, defaultPersonas])
+
+    const displayText = personas.length > 0 ? personas.join(" + ") : placeholder
+
+    const togglePersona = (label: string) => {
+      const isSelected = personas.includes(label)
+      const next = isSelected ? personas.filter((p) => p !== label) : [...personas, label]
+
+      if (!isControlled) {
+        setInternalPersonas(next)
+      }
+
+      onPersonasChange?.(next)
+
+      if (closeOnSelect) {
+        setOpen(false)
+      }
+    }
 
     return (
-      <div
-        className={cn(
-          personaVariants({ variant, size, className }),
-          onClick && "cursor-pointer hover:shadow-sm"
-        )}
-        ref={ref}
-        onClick={onClick}
-        {...props}
-      >
-        {showLeftIcon && (
-          <UserIcon className="h-4 w-4 text-[#272080] flex-shrink-0" />
-        )}
-        <span className="flex-1 text-sm font-medium truncate">
-          {displayText}
-        </span>
-        {showRightIcon && (
-          <ChevronDown className="h-4 w-4 text-[#272080] flex-shrink-0" />
-        )}
-      </div>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            ref={ref}
+            type="button"
+            className={cn(
+              personaVariants({ variant, size, className }),
+              "cursor-pointer hover:shadow-sm"
+            )}
+            aria-haspopup="listbox"
+            aria-expanded={open}
+            {...props}
+          >
+            <span className="flex min-w-0 flex-1 items-center gap-3">
+              {showLeftIcon && (
+                <UserIcon className="h-5 w-5 shrink-0 text-[#4136D4]" />
+              )}
+              <span
+                className={cn(
+                  "truncate text-sm font-medium",
+                  personas.length > 0 ? "text-neutral-900" : "text-neutral-500"
+                )}
+              >
+                {displayText}
+              </span>
+            </span>
+            {showRightIcon && (
+              <ChevronDown
+                className={cn(
+                  "h-4 w-4 shrink-0 text-[#272080] transition-transform duration-200",
+                  open ? "rotate-180" : "rotate-0"
+                )}
+              />
+            )}
+          </button>
+        </PopoverTrigger>
+
+        <PopoverContent
+          className="w-[364px] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg"
+          align="start"
+        >
+          <div className={cn("flex max-h-72 flex-col gap-2 overflow-y-auto p-2", options.length === 0 && "p-0")}>
+            {options.length === 0 ? (
+              <p className="px-2 py-3 text-center text-sm text-neutral-500">
+                No personas available
+              </p>
+            ) : (
+              options.map((option) => {
+                const isSelected = personas.includes(option)
+
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => togglePersona(option)}
+                    className={cn(
+                      "flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-500 focus-visible:ring-offset-0",
+                      isSelected ? "bg-supreme-blue-50 text-neutral-900" : "text-neutral-700 hover:bg-slate-50"
+                    )}
+                    role="option"
+                    aria-selected={isSelected}
+                  >
+                    <span className="truncate text-sm font-medium">{option}</span>
+                    {isSelected && <CheckIcon className="h-4 w-4 shrink-0 text-neutral-900" />}
+                  </button>
+                )
+              })
+            )}
+          </div>
+        </PopoverContent>
+      </Popover>
     )
   }
 )
@@ -177,7 +288,7 @@ const PersonaProfile = React.forwardRef<HTMLDivElement, PersonaProfileProps>(
       >
         <div className="flex flex-1 gap-3 items-start">
           {avatar || (
-            <div className="bg-supreme-blue-700 overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center">
+            <div className="bg-[#4136D4] overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center">
               <p className="font-sans font-normal leading-7 text-lg text-white text-center tracking-normal whitespace-nowrap">
                 {avatarFallback}
               </p>

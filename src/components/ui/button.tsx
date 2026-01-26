@@ -12,17 +12,16 @@ const buttonVariants = cva(
       variant: {
         primary:
           "bg-[#4136D4] text-white hover:bg-[#372AAC] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
-        "primary-stroke":
-          "border border-[#272080] ring-2 ring-white bg-[#4136D4] text-white shadow-[0px_0px_0px_2.3px_#6C62ED] hover:bg-[#372AAC] hover:shadow-[0px_0px_0px_2.3px_#6C62ED] active:bg-[#312C85] active:scale-95 transition-all duration-300 ease-out",
         secondary:
-          "border border-[#D4D4D4] bg-white text-[#737373] hover:bg-white hover:text-[#272080] hover:border-[#272080] transition-all duration-300 ease-out",
+          "border border-[#D4D4D4] bg-white text-[#737373] hover:bg-white hover:text-[#272080] hover:border-[#272080] active:scale-95 active:text-[#272080] active:border-[#272080] transition-all duration-300 ease-out",
         "secondary-color":
-          "bg-[#EDEBFD] text-[#272080] border border-[#D4D4D4] hover:border-[#272080] transition-all duration-300 ease-out",
+          "bg-[#EDEBFD] text-[#272080] border border-[#D4D4D4] hover:border-[#272080] active:scale-95 active:border-[#272080] transition-all duration-300 ease-out",
         "secondary-blue":
-          "bg-[#EDEBFD] text-gray-700 border border-[#C6C2F8] hover:border-[#272080] transition-all duration-300 ease-out",
-        link: "text-[#272080] underline-offset-4 hover:underline bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
-        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
-        outline: "h-9 px-4 rounded-[8px] text-[#737373] border-[#d4d4d4] border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50"
+          "bg-[#EDEBFD] text-gray-700 border border-[#C6C2F8] hover:border-[#272080] active:scale-95 active:border-[#272080] transition-all duration-300 ease-out",
+        link: "text-[#272080] underline-offset-4 hover:underline active:scale-95 bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px]",
+        ghost: "bg-transparent border-none shadow-none h-5 gap-1 min-w-[83px] active:scale-95",
+        outline:
+          "h-9 px-4 rounded-[8px] text-[#737373] border-[#d4d4d4] border bg-background text-foreground hover:bg-accent hover:text-accent-foreground active:scale-95 active:bg-accent active:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 dark:active:bg-input/50"
       },
       size: {
         default: "h-10 rounded-[8px] px-6 py-2",
@@ -48,7 +47,7 @@ export interface ButtonProps
    * The variant style of the button.
    * @default "primary"
    */
-  variant?: "primary" | "primary-stroke" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost" | "outline"
+  variant?: "primary" | "secondary" | "secondary-color" | "secondary-blue" | "link" | "ghost" | "outline"
   /**
    * The size of the button.
    * @default "default"

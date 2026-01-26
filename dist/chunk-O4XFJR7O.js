@@ -2,7 +2,7 @@
 import {
   Button,
   buttonVariants
-} from "./chunk-TG7SB6G6.js";
+} from "./chunk-NP4KP3QH.js";
 import {
   AIIcon,
   PersonaIcon,
@@ -166,10 +166,10 @@ var bannerVariants = cva2(
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        primary: "bg-gradient-to-b from-supreme-blue-600 to-supreme-blue-700 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        secondary: "bg-gradient-to-b from-supreme-blue-500 to-supreme-blue-600 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]",
-        dark: "bg-gradient-to-b from-supreme-blue-700 to-supreme-blue-800 text-white hover:bg-gradient-to-b hover:from-[#4E47AF] hover:to-[#312A93]"
+        default: "bg-supreme-blue-500 text-white hover:bg-supreme-blue-700",
+        primary: "bg-supreme-blue-600 text-white hover:bg-supreme-blue-700",
+        secondary: "bg-supreme-blue-500 text-white hover:bg-supreme-blue-600",
+        dark: "bg-supreme-blue-700 text-white hover:bg-supreme-blue-800"
       },
       size: {
         default: "px-8 py-[14px] h-[72px]",
@@ -2327,7 +2327,7 @@ var PaginationContent = React13.forwardRef(({ className, ...props }, ref) => /* 
   "ul",
   {
     ref,
-    className: cn("flex flex-row items-center", className),
+    className: cn("isolate flex flex-row items-center -space-x-px", className),
     ...props
   }
 ));
@@ -2348,9 +2348,9 @@ var PaginationLink = ({
         variant: "secondary",
         size
       }),
-      className,
-      "rounded-none border-x-1 border-y-2 text-neutral-800 px-5 py-2.5 text-sm font-medium hover:border-supreme-blue-300",
-      isActive && "bg-supreme-blue-50 font-medium"
+      "relative z-0 rounded-none text-neutral-800 hover:z-10 hover:border-supreme-blue-300 focus-visible:z-10",
+      isActive && "bg-supreme-blue-50 text-neutral-900 relative z-10",
+      className
     ),
     ...props
   }
@@ -2363,8 +2363,8 @@ var PaginationPrevious = ({
   PaginationLink,
   {
     "aria-label": "Go to previous page",
-    size: "default",
-    className: cn("!rounded-l-lg !border-l-2", className),
+    size: "icon",
+    className: cn("rounded-l-lg", className),
     ...props,
     children: /* @__PURE__ */ jsx13(ChevronLeft, { className: "h-4 w-4" })
   }
@@ -2377,8 +2377,8 @@ var PaginationNext = ({
   PaginationLink,
   {
     "aria-label": "Go to next page",
-    size: "default",
-    className: cn("!rounded-r-lg !border-r-2", className),
+    size: "icon",
+    className: cn("rounded-r-lg", className),
     ...props,
     children: /* @__PURE__ */ jsx13(ChevronRight2, { className: "h-4 w-4" })
   }
@@ -2391,7 +2391,10 @@ var PaginationEllipsis = ({
   "span",
   {
     "aria-hidden": true,
-    className: cn("flex h-10 w-10 items-center justify-center border-x-1 border-y-2 border-neutral-200", className),
+    className: cn(
+      "flex h-10 w-10 items-center justify-center rounded-none border border-[#D4D4D4] bg-white text-[#737373]",
+      className
+    ),
     ...props,
     children: [
       /* @__PURE__ */ jsx13(MoreHorizontal, { className: "h-4 w-4" }),
@@ -2401,12 +2404,34 @@ var PaginationEllipsis = ({
 );
 PaginationEllipsis.displayName = "PaginationEllipsis";
 
-// src/components/ui/persona.tsx
+// src/components/ui/popover.tsx
 import * as React14 from "react";
+import * as PopoverPrimitive from "@radix-ui/react-popover";
+import { jsx as jsx14 } from "react/jsx-runtime";
+var Popover = PopoverPrimitive.Root;
+var PopoverTrigger = PopoverPrimitive.Trigger;
+var PopoverContent = React14.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx14(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsx14(
+  PopoverPrimitive.Content,
+  {
+    ref,
+    align,
+    sideOffset,
+    className: cn(
+      "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+      className
+    ),
+    ...props
+  }
+) }));
+PopoverContent.displayName = PopoverPrimitive.Content.displayName;
+
+// src/components/ui/persona.tsx
+import * as React15 from "react";
 import { ChevronDown, Building2, CheckCircle } from "lucide-react";
+import { CheckIcon as CheckIcon2 } from "@heroicons/react/24/outline";
 import { cva as cva4 } from "class-variance-authority";
-import { jsx as jsx14, jsxs as jsxs13 } from "react/jsx-runtime";
-var UserIcon = ({ className, ...props }) => /* @__PURE__ */ jsx14(
+import { jsx as jsx15, jsxs as jsxs13 } from "react/jsx-runtime";
+var UserIcon = ({ className, ...props }) => /* @__PURE__ */ jsx15(
   "svg",
   {
     width: "21",
@@ -2416,7 +2441,7 @@ var UserIcon = ({ className, ...props }) => /* @__PURE__ */ jsx14(
     xmlns: "http://www.w3.org/2000/svg",
     className,
     ...props,
-    children: /* @__PURE__ */ jsx14(
+    children: /* @__PURE__ */ jsx15(
       "path",
       {
         d: "M4.48467 16.6946C5.03216 15.4047 6.31043 14.5 7.8 14.5H13.2C14.6896 14.5 15.9678 15.4047 16.5153 16.6946M14.1 7.75C14.1 9.73822 12.4882 11.35 10.5 11.35C8.51177 11.35 6.9 9.73822 6.9 7.75C6.9 5.76177 8.51177 4.15 10.5 4.15C12.4882 4.15 14.1 5.76177 14.1 7.75ZM19.5 10C19.5 14.9706 15.4706 19 10.5 19C5.52944 19 1.5 14.9706 1.5 10C1.5 5.02944 5.52944 1 10.5 1C15.4706 1 19.5 5.02944 19.5 10Z",
@@ -2429,18 +2454,18 @@ var UserIcon = ({ className, ...props }) => /* @__PURE__ */ jsx14(
   }
 );
 var personaVariants = cva4(
-  "inline-flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  "inline-flex w-full items-center justify-between gap-3 rounded-[8px] border transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
   {
     variants: {
       variant: {
-        default: "bg-supreme-blue-50 border-neutral-300 text-supreme-blue-800 hover:bg-supreme-blue-100 hover:border-supreme-blue-800",
-        selected: "bg-supreme-blue-50 border-supreme-blue-800 text-supreme-blue-800",
-        outline: "bg-white border-neutral-300 text-supreme-blue-800 hover:border-supreme-blue-800"
+        default: "bg-[#4136D4]/5 border-[#D4D4D4] text-[#272080] hover:border-supreme-blue-500",
+        selected: "bg-[#EDEBFD] border-[#272080] text-[#272080]",
+        outline: "bg-white border-[#D4D4D4] text-[#737373] hover:text-[#272080] hover:border-[#272080]"
       },
       size: {
-        default: "w-[364px] h-8 px-4 py-2",
-        sm: "h-8 px-3 py-1.5 text-sm",
-        lg: "h-12 px-6 py-3 text-base"
+        default: "w-[364px] h-10 px-6 py-2",
+        sm: "w-[364px] h-8 px-4 py-1.5 text-sm",
+        lg: "w-[364px] h-12 px-6 py-3 text-base"
       }
     },
     defaultVariants: {
@@ -2465,40 +2490,121 @@ var personaProfileVariants = cva4(
     }
   }
 );
-var Persona = React14.forwardRef(
+var Persona = React15.forwardRef(
   ({
     className,
     variant,
     size,
-    personas = [],
+    personas: personasProp,
+    defaultPersonas = [],
+    options: optionsProp,
+    onPersonasChange,
+    closeOnSelect = false,
     placeholder = "Select personas...",
     showLeftIcon = true,
     showRightIcon = true,
-    onClick,
     ...props
   }, ref) => {
-    const displayText = personas.length > 0 ? personas.join(" + ") : placeholder;
-    return /* @__PURE__ */ jsxs13(
-      "div",
-      {
-        className: cn(
-          personaVariants({ variant, size, className }),
-          onClick && "cursor-pointer hover:shadow-sm"
-        ),
-        ref,
-        onClick,
-        ...props,
-        children: [
-          showLeftIcon && /* @__PURE__ */ jsx14(UserIcon, { className: "h-4 w-4 text-[#272080] flex-shrink-0" }),
-          /* @__PURE__ */ jsx14("span", { className: "flex-1 text-sm font-medium truncate", children: displayText }),
-          showRightIcon && /* @__PURE__ */ jsx14(ChevronDown, { className: "h-4 w-4 text-[#272080] flex-shrink-0" })
-        ]
-      }
+    const [open, setOpen] = React15.useState(false);
+    const isControlled = personasProp !== void 0 && typeof onPersonasChange === "function";
+    const [internalPersonas, setInternalPersonas] = React15.useState(
+      () => personasProp !== void 0 && !isControlled ? personasProp : defaultPersonas
     );
+    React15.useEffect(() => {
+      if (!isControlled && personasProp !== void 0) {
+        setInternalPersonas(personasProp);
+      }
+    }, [isControlled, personasProp?.join("\0")]);
+    const personas = isControlled ? personasProp : internalPersonas;
+    const options = React15.useMemo(() => {
+      const base = optionsProp ?? personasProp ?? defaultPersonas;
+      return Array.from(new Set(base));
+    }, [optionsProp, personasProp, defaultPersonas]);
+    const displayText = personas.length > 0 ? personas.join(" + ") : placeholder;
+    const togglePersona = (label) => {
+      const isSelected = personas.includes(label);
+      const next = isSelected ? personas.filter((p) => p !== label) : [...personas, label];
+      if (!isControlled) {
+        setInternalPersonas(next);
+      }
+      onPersonasChange?.(next);
+      if (closeOnSelect) {
+        setOpen(false);
+      }
+    };
+    return /* @__PURE__ */ jsxs13(Popover, { open, onOpenChange: setOpen, children: [
+      /* @__PURE__ */ jsx15(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsxs13(
+        "button",
+        {
+          ref,
+          type: "button",
+          className: cn(
+            personaVariants({ variant, size, className }),
+            "cursor-pointer hover:shadow-sm"
+          ),
+          "aria-haspopup": "listbox",
+          "aria-expanded": open,
+          ...props,
+          children: [
+            /* @__PURE__ */ jsxs13("span", { className: "flex min-w-0 flex-1 items-center gap-3", children: [
+              showLeftIcon && /* @__PURE__ */ jsx15(UserIcon, { className: "h-5 w-5 shrink-0 text-[#4136D4]" }),
+              /* @__PURE__ */ jsx15(
+                "span",
+                {
+                  className: cn(
+                    "truncate text-sm font-medium",
+                    personas.length > 0 ? "text-neutral-900" : "text-neutral-500"
+                  ),
+                  children: displayText
+                }
+              )
+            ] }),
+            showRightIcon && /* @__PURE__ */ jsx15(
+              ChevronDown,
+              {
+                className: cn(
+                  "h-4 w-4 shrink-0 text-[#272080] transition-transform duration-200",
+                  open ? "rotate-180" : "rotate-0"
+                )
+              }
+            )
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ jsx15(
+        PopoverContent,
+        {
+          className: "w-[364px] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
+          align: "start",
+          children: /* @__PURE__ */ jsx15("div", { className: cn("flex max-h-72 flex-col gap-2 overflow-y-auto p-2", options.length === 0 && "p-0"), children: options.length === 0 ? /* @__PURE__ */ jsx15("p", { className: "px-2 py-3 text-center text-sm text-neutral-500", children: "No personas available" }) : options.map((option) => {
+            const isSelected = personas.includes(option);
+            return /* @__PURE__ */ jsxs13(
+              "button",
+              {
+                type: "button",
+                onClick: () => togglePersona(option),
+                className: cn(
+                  "flex w-full items-center justify-between gap-2 rounded-md px-2 py-1.5 text-left transition-colors",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-500 focus-visible:ring-offset-0",
+                  isSelected ? "bg-supreme-blue-50 text-neutral-900" : "text-neutral-700 hover:bg-slate-50"
+                ),
+                role: "option",
+                "aria-selected": isSelected,
+                children: [
+                  /* @__PURE__ */ jsx15("span", { className: "truncate text-sm font-medium", children: option }),
+                  isSelected && /* @__PURE__ */ jsx15(CheckIcon2, { className: "h-4 w-4 shrink-0 text-neutral-900" })
+                ]
+              },
+              option
+            );
+          }) })
+        }
+      )
+    ] });
   }
 );
 Persona.displayName = "Persona";
-var PersonaProfile = React14.forwardRef(
+var PersonaProfile = React15.forwardRef(
   ({
     className,
     variant,
@@ -2518,45 +2624,24 @@ var PersonaProfile = React14.forwardRef(
         ...props,
         children: [
           /* @__PURE__ */ jsxs13("div", { className: "flex flex-1 gap-3 items-start", children: [
-            avatar || /* @__PURE__ */ jsx14("div", { className: "bg-supreme-blue-700 overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center", children: /* @__PURE__ */ jsx14("p", { className: "font-sans font-normal leading-7 text-lg text-white text-center tracking-normal whitespace-nowrap", children: avatarFallback }) }),
+            avatar || /* @__PURE__ */ jsx15("div", { className: "bg-[#4136D4] overflow-hidden rounded-full shrink-0 size-10 relative flex items-center justify-center", children: /* @__PURE__ */ jsx15("p", { className: "font-sans font-normal leading-7 text-lg text-white text-center tracking-normal whitespace-nowrap", children: avatarFallback }) }),
             /* @__PURE__ */ jsxs13("div", { className: "flex flex-1 flex-col gap-1.5 items-start min-h-0 min-w-0", children: [
-              /* @__PURE__ */ jsx14("p", { className: "font-sans font-semibold leading-6 text-neutral-900 text-base w-full", children: name }),
-              /* @__PURE__ */ jsx14("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-sm w-full", children: title }),
-              /* @__PURE__ */ jsx14("div", { className: "flex gap-[5px] items-center w-full", children: /* @__PURE__ */ jsxs13("div", { className: "flex flex-1 gap-[5px] items-center min-h-0 min-w-0", children: [
-                /* @__PURE__ */ jsx14(Building2, { className: "size-3.5 text-neutral-900" }),
-                /* @__PURE__ */ jsx14("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-xs", children: organization })
+              /* @__PURE__ */ jsx15("p", { className: "font-sans font-semibold leading-6 text-neutral-900 text-base w-full", children: name }),
+              /* @__PURE__ */ jsx15("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-sm w-full", children: title }),
+              /* @__PURE__ */ jsx15("div", { className: "flex gap-[5px] items-center w-full", children: /* @__PURE__ */ jsxs13("div", { className: "flex flex-1 gap-[5px] items-center min-h-0 min-w-0", children: [
+                /* @__PURE__ */ jsx15(Building2, { className: "size-3.5 text-neutral-900" }),
+                /* @__PURE__ */ jsx15("p", { className: "font-sans font-normal leading-4 text-neutral-600 text-xs", children: organization })
               ] }) }),
-              tags.length > 0 && /* @__PURE__ */ jsx14("div", { className: "flex flex-wrap gap-1 items-start w-full", children: tags.map((tag, index) => /* @__PURE__ */ jsx14(Badge, { variant: "default", className: "bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full", children: tag }, index)) })
+              tags.length > 0 && /* @__PURE__ */ jsx15("div", { className: "flex flex-wrap gap-1 items-start w-full", children: tags.map((tag, index) => /* @__PURE__ */ jsx15(Badge, { variant: "default", className: "bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full", children: tag }, index)) })
             ] })
           ] }),
-          /* @__PURE__ */ jsx14("div", { className: cn("relative shrink-0 size-6", variant === "selected" ? "opacity-100" : "opacity-0"), children: variant === "selected" && /* @__PURE__ */ jsx14(CheckCircle, { className: "size-6 text-supreme-blue-700" }) })
+          /* @__PURE__ */ jsx15("div", { className: cn("relative shrink-0 size-6", variant === "selected" ? "opacity-100" : "opacity-0"), children: variant === "selected" && /* @__PURE__ */ jsx15(CheckCircle, { className: "size-6 text-supreme-blue-700" }) })
         ]
       }
     );
   }
 );
 PersonaProfile.displayName = "PersonaProfile";
-
-// src/components/ui/popover.tsx
-import * as React15 from "react";
-import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { jsx as jsx15 } from "react/jsx-runtime";
-var Popover = PopoverPrimitive.Root;
-var PopoverTrigger = PopoverPrimitive.Trigger;
-var PopoverContent = React15.forwardRef(({ className, align = "center", sideOffset = 4, ...props }, ref) => /* @__PURE__ */ jsx15(PopoverPrimitive.Portal, { children: /* @__PURE__ */ jsx15(
-  PopoverPrimitive.Content,
-  {
-    ref,
-    align,
-    sideOffset,
-    className: cn(
-      "z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
-      className
-    ),
-    ...props
-  }
-) }));
-PopoverContent.displayName = PopoverPrimitive.Content.displayName;
 
 // src/components/ui/slider.tsx
 import * as React16 from "react";
@@ -3913,7 +3998,7 @@ Footer.displayName = "Footer";
 // src/components/ui/dropdown.tsx
 import * as React26 from "react";
 import {
-  CheckIcon as CheckIcon2,
+  CheckIcon as CheckIcon3,
   ChevronUpDownIcon,
   MagnifyingGlassIcon
 } from "@heroicons/react/24/outline";
@@ -4018,7 +4103,7 @@ var Dropdown = React26.forwardRef(
           /* @__PURE__ */ jsx26("span", { className: "truncate text-sm font-medium", children: option.label }),
           renderOptionMeta && /* @__PURE__ */ jsx26("span", { className: "ml-auto truncate text-xs text-neutral-500", children: renderOptionMeta(option) })
         ] }),
-        isSelected && /* @__PURE__ */ jsx26(CheckIcon2, { className: "h-4 w-4 shrink-0 text-neutral-900" })
+        isSelected && /* @__PURE__ */ jsx26(CheckIcon3, { className: "h-4 w-4 shrink-0 text-neutral-900" })
       ] });
     };
     return /* @__PURE__ */ jsxs22(
@@ -4208,13 +4293,13 @@ export {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
   personaVariants,
   personaProfileVariants,
   Persona,
   PersonaProfile,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
   Slider,
   RangeSlider,
   Table,

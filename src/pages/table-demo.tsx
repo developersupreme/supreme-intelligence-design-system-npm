@@ -249,7 +249,7 @@ const TableDemo = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center gap-4">
             <Link
-              to="/components"
+              to="/home"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
