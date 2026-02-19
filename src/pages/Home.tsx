@@ -194,7 +194,7 @@ const sidebarItems: SidebarSection[] = [
   },
 ];
 
-const Components = () => {
+const Components = () => { // rebuild
   const navigate = useNavigate();
   const [singleSliderValue, setSingleSliderValue] = useState([75]);
   const [rangeSliderValue, setRangeSliderValue] = useState<[number, number]>([

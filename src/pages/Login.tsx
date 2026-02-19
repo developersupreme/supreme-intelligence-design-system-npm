@@ -263,7 +263,7 @@ const Login: React.FC = () => {
           <AuthFormPrimary>
             <Button
               type="submit"
-              variant="primary-stroke"
+              variant="primary"
               size="xl"
               className="w-full"
               disabled={isSubmitting}
