@@ -53,7 +53,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
           <div
             className={cn(
-              "relative flex items-center gap-2 px-3 py-3.5 rounded-md bg-white border",
+              "relative flex items-center gap-2 rounded-md bg-white border",
               isError
                 ? "border-destructive focus-within:ring-0"
                 : isActive
@@ -64,7 +64,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             )}
           >
             {leftIcon && (
-              <div className="flex items-center justify-center shrink-0 w-5 h-5">
+              <div className="flex items-center ml-3 justify-center shrink-0 w-5 h-5">
                 {React.isValidElement(leftIcon) &&
                   React.cloneElement(leftIcon as React.ReactElement<any>, {
                     className: cn(
@@ -81,8 +81,10 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <input
               type={type}
               className={cn(
-                "flex-1 text-sm min-w-0 h-auto bg-transparent border-0 text-sm leading-5 placeholder:text-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
-                className
+                "flex-1 text-sm min-w-0 p-3 h-auto rounded-lg bg-transparent border-0 text-sm leading-5 placeholder:text-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+                className,
+                leftIcon && "px-0",
+                rightIcon && "px-0"
               )}
               ref={ref}
               disabled={isDisabled}
@@ -90,7 +92,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             />
 
             {rightIcon && (
-              <div className="flex items-center justify-center shrink-0 w-5 h-5">
+              <div className="flex mr-3 items-center justify-center shrink-0 w-5 h-5">
                 {React.isValidElement(rightIcon) &&
                   React.cloneElement(rightIcon as React.ReactElement<any>, {
                     className: cn(

@@ -218,7 +218,7 @@ const Dropdown = React.forwardRef<
             ref={ref}
             type="button"
             className={cn(
-              "flex w-[267px] items-center justify-between gap-2 rounded-md border border-neutral-300 bg-white px-3 py-3 text-sm text-neutral-700 transition-colors",
+              "flex items-center justify-between gap-2 rounded-md border border-neutral-300 bg-white px-3 py-3 text-sm text-neutral-700 transition-colors",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-500 focus-visible:ring-offset-2",
               disabled && "cursor-not-allowed bg-neutral-100 text-neutral-400",
               className
@@ -250,7 +250,7 @@ const Dropdown = React.forwardRef<
 
         <PopoverContent
           className={cn(
-            "w-[267px] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
+            "w-[var(--radix-popover-trigger-width)] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
             !searchable && "pt-2"
           )}
           align="start"

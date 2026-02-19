@@ -23,7 +23,7 @@ const ContentBoxHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn("flex flex-col space-y-1.5 p-3 md:p-6", className)}
     {...props}
   />
 ));
@@ -36,7 +36,7 @@ const ContentBoxTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "text-lg md:text-2xl font-semibold leading-none tracking-tight",
       className
     )}
     {...props}
@@ -60,7 +60,7 @@ const ContentBoxContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-3 pt-0 md:p-6 md:pt-0", className)} {...props} />
 ));
 ContentBoxContent.displayName = "ContentBoxContent";
 

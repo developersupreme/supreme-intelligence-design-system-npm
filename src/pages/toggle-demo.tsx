@@ -18,8 +18,8 @@ export function ToggleDemo() {
   };
 
   return (
-    <div className="p-8 space-y-8">
-      <div className="grid grid-cols-3 gap-4">
+    <div className="p-4 md:p-8 space-y-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <div className="flex flex-col gap-4">
           <div>
             <h2 className="text-lg font-semibold mb-4">Toggle States</h2>

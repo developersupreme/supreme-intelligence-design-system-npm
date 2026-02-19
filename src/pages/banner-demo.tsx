@@ -27,19 +27,19 @@ export default function BannerDemo() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
+    <div className="bg-gray-50 p-4 md:p-8">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 mb-4">
             Banner Component Demo
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-base md:text-lg text-gray-600">
             Based on the provided image design
           </p>
         </div>
         {/* Variant examples */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <h2 className="text-lg md:text-2xl font-semibold text-gray-800">
             Banner Variants
           </h2>
           <div className="space-y-4">
@@ -66,7 +66,7 @@ export default function BannerDemo() {
 
         {/* Size examples */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">Banner Sizes</h2>
+          <h2 className="text-lg md:text-2xl font-semibold text-gray-800">Banner Sizes</h2>
           <div className="space-y-4">
             <Banner
               size="sm"
@@ -91,7 +91,7 @@ export default function BannerDemo() {
 
         {/* Banner without CTA */}
         <div className="space-y-4">
-          <h2 className="text-2xl font-semibold text-gray-800">
+          <h2 className="text-lg md:text-2xl font-semibold text-gray-800">
             Banner Without CTA
           </h2>
           <Banner

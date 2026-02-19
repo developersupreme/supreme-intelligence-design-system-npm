@@ -144,45 +144,71 @@ declare const Button: React.ForwardRefExoticComponent<ButtonProps & React.RefAtt
 
 declare const AnnouncementCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     author?: string;
+    authorClassName?: string;
     date?: string;
+    dateClassName?: string;
     content: string;
+    contentClassName?: string;
     badgeText?: string;
+    badgeClassName?: string;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const InfoCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title?: string;
+    titleClassName?: string;
     subtitle?: string;
+    subtitleClassName?: string;
     description?: string;
+    descriptionClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const IconCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     value?: string | number;
     showLeftIcon?: boolean;
     showRightIcon?: boolean;
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const MessageAngle: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title?: string;
+    titleClassName?: string;
     description?: string;
+    descriptionClassName?: string;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const MessageCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     headerTitle: string;
+    headerTitleClassName?: string;
     mainContent: string;
+    mainTitleClassName?: string;
     nestedTitle: string;
+    nestedTitleClassName?: string;
     nestedContent: string;
+    nestedContentClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const HighlightCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     value: string | number;
+    valueClassName?: string;
     title: string;
+    titleClassName?: string;
     subtitle?: string;
+    subtitleClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
 } & React.RefAttributes<HTMLDivElement>>;
 declare const HighlightCTACard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     icon?: React.ReactNode;
     title?: string;
+    titleClassName?: string;
     value?: string | number;
+    valueClassName?: string;
     description: string;
+    descriptionClassName?: string;
     ctaText?: string;
     onCtaClick?: () => void;
     showIcon?: boolean;
@@ -192,7 +218,9 @@ declare const HighlightCTACard: React.ForwardRefExoticComponent<React.HTMLAttrib
 declare const HowItWorksCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     stepNumber?: number;
     title: string;
+    titleClassName?: string;
     description: string;
+    descriptionClassName?: string;
     type?: "numbers" | "icons";
     icon?: React.ReactNode;
 } & React.RefAttributes<HTMLDivElement>>;
@@ -205,13 +233,17 @@ declare const SingleIconCard: React.ForwardRefExoticComponent<React.HTMLAttribut
 } & React.RefAttributes<HTMLDivElement>>;
 declare const ContentTypeCard: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     description: string;
+    descriptionClassName?: string;
     icon?: React.ReactNode;
     variant?: "default" | "selected" | "hover" | "ghost";
 } & React.RefAttributes<HTMLDivElement>>;
 declare const CardWithProgress: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & {
     title: string;
     description: string;
+    titleClassName?: string;
+    descriptionClassName?: string;
     progressItems: Array<{
         label: string;
         value: number;

@@ -224,10 +224,10 @@ const Components = () => {
   return (
     <Layout headerItems={headerItems} sidebarItems={sidebarItems}>
       <div className="min-h-screen bg-background">
-        <div className="container mx-auto py-8 space-y-12">
+        <div className="container mx-auto py-4 md:py-8 px-4 space-y-12">
           {/* Header */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <Button
                 variant="secondary"
                 size="lg"
@@ -241,8 +241,8 @@ const Components = () => {
               </Button>
             </div>
             <div className="text-center space-y-4">
-              <h1 className="text-4xl font-bold">Design System Components</h1>
-              <p className="text-xl text-muted-foreground">
+              <h1 className="text-2xl md:text-4xl font-bold">Design System Components</h1>
+              <p className="text-base md:text-xl text-muted-foreground">
                 A showcase of all available components
               </p>
             </div>
@@ -251,24 +251,24 @@ const Components = () => {
             defaultValue="InteractiveDynamicControls"
             className="w-full mx-auto"
           >
-            <TabsList className="w-full justify-between">
+            <TabsList className="w-full flex-col sm:flex-row justify-between h-auto gap-1 sm:gap-0 p-1">
               <TabsTrigger
                 value="InteractiveDynamicControls"
-                className="w-1/3"
+                className="w-full sm:w-1/3 whitespace-normal text-xs sm:text-sm py-2"
                 variant="supreme-blue"
               >
                 Interactive & Dynamic Controls
               </TabsTrigger>
               <TabsTrigger
                 value="ContentOrganizationLayout"
-                className="w-1/3"
+                className="w-full sm:w-1/3 whitespace-normal text-xs sm:text-sm py-2"
                 variant="supreme-blue"
               >
                 Content Organization & Layout
               </TabsTrigger>
               <TabsTrigger
                 value="VisualElementsIndicators"
-                className="w-1/3"
+                className="w-full sm:w-1/3 whitespace-normal text-xs sm:text-sm py-2"
                 variant="supreme-blue"
               >
                 Visual Elements & Indicators
@@ -278,7 +278,7 @@ const Components = () => {
               <div className="flex flex-col gap-4 mt-4">
                 {/* Buttons */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Buttons</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Buttons</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Button Matrix</ContentBoxTitle>
@@ -292,8 +292,8 @@ const Components = () => {
                         <h3 className="text-lg font-medium">
                           Button States & Variants
                         </h3>
-                        <div className="overflow-x-auto">
-                          <table className="w-full border-collapse">
+                        <div className="overflow-x-auto w-full">
+                          <table className="min-w-max w-full border-collapse">
                             <thead>
                               <tr className="border-b">
                                 <th className="text-left p-3 font-medium">
@@ -444,7 +444,7 @@ const Components = () => {
                 </section>
                 {/* Toggle */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Toggle & Checkbox</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Toggle & Checkbox</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Toggle & Checkbox</ContentBoxTitle>
@@ -459,7 +459,7 @@ const Components = () => {
                 </section>
                 {/* Toast */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Toast</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Toast</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Toast Component</ContentBoxTitle>
@@ -474,7 +474,7 @@ const Components = () => {
                 </section>
                 {/* Banner */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Banner</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Banner</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Banner Component</ContentBoxTitle>
@@ -489,7 +489,7 @@ const Components = () => {
                 </section>
                 {/* Table */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Table</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Table</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>
@@ -514,7 +514,7 @@ const Components = () => {
                 </section>
                 {/* Slider */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Slider</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Slider</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Range Slider Component</ContentBoxTitle>
@@ -612,7 +612,7 @@ const Components = () => {
                 </section>
                 {/* Input & Textarea */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Form Inputs</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Form Inputs</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>
@@ -716,7 +716,7 @@ const Components = () => {
                 </section>
                 {/* Progress */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Progress</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Progress</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Progress Component</ContentBoxTitle>
@@ -728,7 +728,7 @@ const Components = () => {
                 </section>
                 {/* Accordion */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Accordion</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Accordion</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Accordion Component</ContentBoxTitle>
@@ -757,7 +757,7 @@ const Components = () => {
                 </section>
                 {/* Page Level Navigation */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">
+                  <h2 className="text-xl md:text-3xl font-semibold">
                     Page Level Navigation
                   </h2>
                   <ContentBox>
@@ -787,7 +787,7 @@ const Components = () => {
                           <h3 className="text-lg font-semibold mb-2">
                             Different Variants
                           </h3>
-                          <div className="flex gap-2">
+                          <div className="flex flex-wrap gap-2">
                             <PageLevel variant="default">
                               Default variant
                             </PageLevel>
@@ -805,7 +805,7 @@ const Components = () => {
                           <h3 className="text-lg font-semibold mb-2">
                             Arrow Positions
                           </h3>
-                          <div className="gap-2 items-center flex">
+                          <div className="flex flex-wrap items-center gap-2">
                             <PageLevel arrowPosition="before">
                               Arrow before text
                             </PageLevel>
@@ -849,7 +849,7 @@ const Components = () => {
               <div className="flex flex-col gap-4 mt-4">
                 {/* Cards */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Cards</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Cards</h2>
                   <ContentBox className="bg-neutral-100">
                     <ContentBoxHeader>
                       <ContentBoxTitle>Card Components</ContentBoxTitle>
@@ -857,7 +857,7 @@ const Components = () => {
                         Various card layouts and styles for different use cases.{" "}
                       </ContentBoxDescription>
                     </ContentBoxHeader>
-                    <ContentBoxContent className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-2 justify-center">
+                    <ContentBoxContent className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-center">
                       {/* Message Angle */}
                       <div className="space-y-4">
                         <h3 className="text-lg font-medium">Message Angle</h3>
@@ -1010,7 +1010,7 @@ const Components = () => {
                 </section>
                 {/* Pagination Demo */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Pagination</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Pagination</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Pagination Showcase</ContentBoxTitle>
@@ -1065,21 +1065,9 @@ const Components = () => {
             </TabsContent>
             <TabsContent value="VisualElementsIndicators">
               <div className="flex flex-col gap-4 mt-4">
-                 {/* dropdown */}
-                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Dropdown</h2>
-                  <ContentBox>
-                    <ContentBoxHeader>
-                      <ContentBoxTitle>Dropdown Component</ContentBoxTitle>
-                    </ContentBoxHeader>
-                    <ContentBoxContent>
-                      <Dropdown options={[{ id: "1", label: "Option 1" }, { id: "2", label: "Option 2" }, { id: "3", label: "Option 3" }]} searchable={false} />
-                    </ContentBoxContent>
-                  </ContentBox>
-                </section>
                 {/* Icons */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Icons</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Icons</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Custom Icons</ContentBoxTitle>
@@ -1109,7 +1097,7 @@ const Components = () => {
                 </section>
                 {/* Persona */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Persona</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Persona</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Persona Component</ContentBoxTitle>
@@ -1145,7 +1133,7 @@ const Components = () => {
                 </section>
                 {/* Logo */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Logo</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Logo</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Brand Logos</ContentBoxTitle>
@@ -1153,14 +1141,14 @@ const Components = () => {
                         Different logo variants and themes
                       </ContentBoxDescription>
                     </ContentBoxHeader>
-                    <ContentBoxContent className="space-y-4 bg-slate-400 p-8 rounded-lg">
-                      <div className="flex items-center gap-8">
+                    <ContentBoxContent className="space-y-4 bg-slate-400 p-4 md:p-8 rounded-lg">
+                      <div className="flex flex-wrap items-center gap-4 md:gap-8">
                         <Logo variant="curie" size="sm" />
                         <Logo variant="curie" size="sm" showText={false} />
                         <Logo variant="supreme" size="sm" />
                         <Logo variant="supreme" size="sm" showText={false} />
                       </div>
-                      <div className="flex items-center gap-8">
+                      <div className="flex flex-wrap items-center gap-4 md:gap-8">
                         <Logo variant="curie" size="md" theme="black" />
                         <Logo
                           variant="curie"
@@ -1176,7 +1164,7 @@ const Components = () => {
                           theme="black"
                         />
                       </div>
-                      <div className="flex items-center gap-8">
+                      <div className="flex flex-wrap items-center gap-4 md:gap-8">
                         <Logo variant="curie" size="lg" theme="white" />
                         <Logo
                           variant="curie"
@@ -1197,7 +1185,7 @@ const Components = () => {
                 </section>
                 {/* Badges */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Badges</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Badges</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Badge Variants</ContentBoxTitle>
@@ -1256,7 +1244,7 @@ const Components = () => {
                 </section>
                 {/* Avatars */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Avatars</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Avatars</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Avatar Component</ContentBoxTitle>
@@ -1274,7 +1262,7 @@ const Components = () => {
                           <h4 className="text-sm font-medium text-muted-foreground">
                             Photo
                           </h4>
-                          <div className="flex items-center gap-6">
+                          <div className="flex flex-wrap items-center gap-4 md:gap-6">
                             <div className="flex flex-col items-center gap-2">
                               <Avatar
                                 size="sm"
@@ -1316,7 +1304,7 @@ const Components = () => {
                           <h4 className="text-sm font-medium text-muted-foreground">
                             Initials
                           </h4>
-                          <div className="flex items-center gap-6">
+                          <div className="flex flex-wrap items-center gap-4 md:gap-6">
                             <div className="flex flex-col items-center gap-2">
                               <Avatar
                                 size="sm"
@@ -1358,7 +1346,7 @@ const Components = () => {
                           <h4 className="text-sm font-medium text-muted-foreground">
                             Groups
                           </h4>
-                          <div className="flex items-center gap-6">
+                          <div className="flex flex-wrap items-center gap-4 md:gap-6">
                             <div className="flex flex-col items-center gap-2">
                               <AvatarGroup size="sm">
                                 {[...Array(5)].map((_, i) => (
@@ -1412,7 +1400,7 @@ const Components = () => {
                 </section>
                 {/* Tooltip */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semibold">Tooltip</h2>
+                  <h2 className="text-xl md:text-3xl font-semibold">Tooltip</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Tooltip Component</ContentBoxTitle>
@@ -1421,7 +1409,7 @@ const Components = () => {
                         collapsible format
                       </ContentBoxDescription>
                     </ContentBoxHeader>
-                    <ContentBoxContent className="flex gap-4">
+                    <ContentBoxContent className="flex flex-wrap gap-4">
                       <Tooltip>
                         <TooltipTrigger>Top</TooltipTrigger>
                         <TooltipContent arrowDirection="top">
@@ -1451,7 +1439,7 @@ const Components = () => {
                 </section>
                 {/* Quotes */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Quotes</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Quotes</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Quote Component</ContentBoxTitle>
@@ -1466,7 +1454,7 @@ const Components = () => {
                 </section>
                 {/* Credit Selector */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Credit Selector</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Credit Selector</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Credit Selector Component</ContentBoxTitle>
@@ -1478,7 +1466,7 @@ const Components = () => {
                 </section>
                 {/*drag and drop*/}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Drag and Drop</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Drag and Drop</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Drag and Drop Component</ContentBoxTitle>
@@ -1493,7 +1481,7 @@ const Components = () => {
                 </section>
                 {/* page-heading */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Page Heading</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Page Heading</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Page Heading Component</ContentBoxTitle>
@@ -1505,7 +1493,7 @@ const Components = () => {
                 </section>
                 {/* stepper */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Stepper</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Stepper</h2>
                   <ContentBox className="">
                     <ContentBoxHeader>
                       <ContentBoxTitle>Stepper Component</ContentBoxTitle>
@@ -1524,13 +1512,13 @@ const Components = () => {
                 </section>
                 {/* dropdown */}
                 <section className="space-y-2">
-                  <h2 className="text-3xl font-semold">Dropdown</h2>
+                  <h2 className="text-xl md:text-3xl font-semold">Dropdown</h2>
                   <ContentBox>
                     <ContentBoxHeader>
                       <ContentBoxTitle>Dropdown Component</ContentBoxTitle>
                     </ContentBoxHeader>
                     <ContentBoxContent>
-                      <Dropdown options={[{ id: "1", label: "Option 1" }, { id: "2", label: "Option 2" }, { id: "3", label: "Option 3" }]} searchable={false} />
+                      <Dropdown className="w-full" options={[{ id: "1", label: "Option 1" }, { id: "2", label: "Option 2" }, { id: "3", label: "Option 3" }]} searchable={false} />
                     </ContentBoxContent>
                   </ContentBox>
                 </section>

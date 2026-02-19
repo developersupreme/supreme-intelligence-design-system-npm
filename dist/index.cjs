@@ -767,21 +767,21 @@ var AnnouncementCard = React8.forwardRef(({ className, title, author, date, cont
       ...props,
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-2.5 items-start", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold text-black leading-7 whitespace-pre-wrap", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-lg font-semibold text-black leading-7 whitespace-pre-wrap", props.titleClassName), children: title }),
           (author || date) && /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-2.5 items-center", children: [
-            author && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs font-normal text-neutral-500 leading-4", children: author }),
+            author && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: cn("text-xs font-normal text-neutral-500 leading-4", props.authorClassName), children: author }),
             author && date && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs text-neutral-500", children: "|" }),
-            date && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs font-normal text-neutral-500 leading-4", children: date })
+            date && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: cn("text-xs font-normal text-neutral-500 leading-4", props.dateClassName), children: date })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-800 leading-6 w-full whitespace-pre-wrap", children: content })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-800 leading-6 w-full whitespace-pre-wrap", props.contentClassName), children: content })
         ] }),
-        badgeText && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-7 right-5", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Badge, { variant: "default", className: "text-gray-600 text-xs", children: badgeText }) })
+        badgeText && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-7 right-5", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(Badge, { variant: "default", className: cn("text-gray-600 text-xs", props.badgeClassName), children: badgeText }) })
       ]
     }
   );
 });
 AnnouncementCard.displayName = "AnnouncementCard";
-var InfoCard = React8.forwardRef(({ className, title, subtitle, description, showIcon = true, ...props }, ref) => {
+var InfoCard = React8.forwardRef(({ className, showIcon = true, ...props }, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
     "div",
     {
@@ -793,18 +793,18 @@ var InfoCard = React8.forwardRef(({ className, title, subtitle, description, sho
       tabIndex: 0,
       ...props,
       children: [
-        showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-6 right-6", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.SparklesIcon, { className: "w-[18px] h-[18px]" }) }),
+        showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-6 right-6", children: props.icon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.SparklesIcon, { className: "w-[18px] h-[18px]" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: cn(showIcon && "pr-8"), children: [
-          subtitle && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-lg font-normal text-neutral-700 mb-2", children: subtitle }),
-          title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-2xl font-semibold text-neutral-800 mb-1", children: title }),
-          description && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 leading-6", children: description })
+          props.subtitle && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-lg font-normal text-neutral-700 mb-2", props.subtitleClassName), children: props.subtitle }),
+          props.title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-2xl font-semibold text-neutral-800 mb-1", props.titleClassName), children: props.title }),
+          props.description && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 leading-6", props.descriptionClassName), children: props.description })
         ] })
       ]
     }
   );
 });
 InfoCard.displayName = "InfoCard";
-var IconCard = React8.forwardRef(({ className, title, value, showLeftIcon = true, showRightIcon = true, ...props }, ref) => {
+var IconCard = React8.forwardRef(({ className, title, value, showLeftIcon = true, showRightIcon = true, leftIcon, rightIcon, ...props }, ref) => {
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(
     "div",
     {
@@ -817,13 +817,13 @@ var IconCard = React8.forwardRef(({ className, title, value, showLeftIcon = true
       ...props,
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-3 items-center", children: [
-          showLeftIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-neutral-800" }) }),
+          showLeftIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-shrink-0", children: leftIcon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-neutral-800" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-1 items-start whitespace-nowrap", children: [
-            title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-base font-normal text-neutral-600 leading-6", children: title }),
+            title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-base font-normal text-neutral-600 leading-6", props.titleClassName), children: title }),
             value && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "text-2xl font-semibold text-neutral-800 leading-8", children: value })
           ] })
         ] }),
-        showRightIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.UsersIcon, { className: "w-[35px] h-[35px] text-supreme-blue-700" })
+        showRightIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex-shrink-0", children: rightIcon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.UsersIcon, { className: "w-[35px] h-[35px] text-supreme-blue-700" }) })
       ]
     }
   );
@@ -839,8 +839,8 @@ var MessageAngle = React8.forwardRef(({ className, title, description, children,
     ),
     ...props,
     children: [
-      title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-base font-normal mb-3 text-neutral-600", children: title }),
-      description && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs text-neutral-600 leading-relaxed", children: description }),
+      title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-base font-normal mb-3 text-neutral-600", props.titleClassName), children: title }),
+      description && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-xs text-neutral-600 leading-relaxed", props.descriptionClassName), children: description }),
       children
     ]
   }
@@ -866,14 +866,14 @@ var MessageCard = React8.forwardRef(
       tabIndex: 0,
       ...props,
       children: [
-        showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-6 right-6", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.PencilSquareIcon, { className: "w-[18px] h-[18px] text-neutral-600" }) }),
+        showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "absolute top-6 right-6", children: props.icon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.PencilSquareIcon, { className: "w-[18px] h-[18px] text-neutral-600" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-2.5 items-start", children: [
           /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-2 items-center", children: [
             /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "w-2.5 h-2.5 bg-supreme-blue-300 rounded-full" }),
-            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-lg font-semibold text-supreme-blue-800 leading-7 whitespace-nowrap", children: headerTitle })
+            /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-lg font-semibold text-supreme-blue-800 leading-7 whitespace-nowrap", props.headerTitleClassName), children: headerTitle })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-xs font-normal text-neutral-600 leading-4 w-full whitespace-pre-wrap", children: mainContent }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(MessageAngle, { title: nestedTitle, description: nestedContent, className: "bg-gray-100 rounded-lg p-4" })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-xs font-normal text-neutral-600 leading-4 w-full whitespace-pre-wrap", props.mainTitleClassName), children: mainContent }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(MessageAngle, { title: nestedTitle, description: nestedContent, titleClassName: props.nestedTitleClassName, descriptionClassName: props.nestedContentClassName })
         ] })
       ]
     }
@@ -891,14 +891,14 @@ var HighlightCard = React8.forwardRef(({ className, value, title, subtitle, show
     tabIndex: 0,
     ...props,
     children: [
-      showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-neutral-800" }) }),
+      showIcon && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full flex-shrink-0", children: props.icon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-neutral-800" }) }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "text-3xl font-semibold text-neutral-800 leading-9 whitespace-nowrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: cn("text-3xl font-semibold text-neutral-800 leading-9 whitespace-nowrap", props.valueClassName), children: [
           value,
           "%"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-base font-semibold text-neutral-600 leading-6", children: title }),
-        subtitle && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 leading-6", children: subtitle })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-base font-semibold text-neutral-600 leading-6", props.titleClassName), children: title }),
+        subtitle && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 leading-6", props.subtitleClassName), children: subtitle })
       ] })
     ]
   }
@@ -917,10 +917,10 @@ var HighlightCTACard = React8.forwardRef(({ className, title, value, description
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-3 items-center", children: [
         showIcon && icon ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "text-supreme-blue-900 w-6 h-6 flex items-center justify-center", children: icon }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-white flex items-center justify-center p-2.5 rounded-full flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-supreme-blue-900" }) }),
-        title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-2xl font-semibold text-supreme-blue-900 leading-8 whitespace-pre-wrap", children: title })
+        title && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-2xl font-semibold text-supreme-blue-900 leading-8 whitespace-pre-wrap", props.titleClassName), children: title })
       ] }),
-      value && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "text-4xl font-bold text-supreme-blue-900 leading-10 whitespace-nowrap", children: value }),
-      showDescription && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", children: description }),
+      value && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: cn("text-4xl font-bold text-supreme-blue-900 leading-10 whitespace-nowrap", props.valueClassName), children: value }),
+      showDescription && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", props.descriptionClassName), children: description }),
       showAction && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(
         "button",
         {
@@ -945,9 +945,9 @@ var HowItWorksCard = React8.forwardRef(({ className, stepNumber, title, descript
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-3.5 items-center justify-center shrink-0 w-full", children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full shrink-0 size-[41px]", children: type === "icons" && icon ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "size-6 flex items-center justify-center", children: icon }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-[#4136d4] text-lg font-bold leading-7 text-center w-full", children: stepNumber || 1 }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-xl font-normal text-black text-center leading-7", children: title })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-xl font-normal text-black text-center leading-7", props.titleClassName), children: title })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 text-center leading-6 w-full whitespace-pre-wrap", children: description })
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 text-center leading-6 w-full whitespace-pre-wrap", props.descriptionClassName), children: description })
     ]
   }
 ));
@@ -993,8 +993,8 @@ var ContentTypeCard = React8.forwardRef(({ className, title, description, icon, 
       children: /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-2.5 items-start relative shrink-0 w-full", children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "size-[35px] flex items-center justify-center shrink-0", children: icon || /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.DocumentIcon, { className: "w-[35px] h-[35px] text-supreme-blue-700" }) }),
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-1 flex-col gap-1 items-start leading-6 min-w-0 whitespace-pre-wrap", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-lg font-semibold text-neutral-900 w-full", children: title }),
-          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 w-full", children: description })
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-lg font-semibold text-neutral-900 w-full", props.titleClassName), children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 w-full", props.descriptionClassName), children: description })
         ] })
       ] })
     }
@@ -1013,9 +1013,9 @@ var CardWithProgress = React8.forwardRef(({ className, title, description, progr
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex gap-3 items-center", children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_outline5.ArrowTrendingUpIcon, { className: "w-[25px] h-[25px] text-neutral-800" }),
-        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: "text-xl font-bold text-supreme-blue-900 leading-7 whitespace-pre-wrap w-[258px]", children: title })
+        /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("h3", { className: cn("text-xl font-bold text-supreme-blue-900 leading-7 whitespace-pre-wrap w-[258px]", props.titleClassName), children: title })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: "text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", children: description }),
+      /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("p", { className: cn("text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", props.descriptionClassName), children: description }),
       /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: "flex flex-col gap-2.5 w-full", children: progressItems.map((item, index) => /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex flex-col gap-1", children: [
         /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("div", { className: "flex items-center justify-between", children: [
           /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("span", { className: "text-xs font-normal text-neutral-600", children: item.label }),
@@ -1134,7 +1134,7 @@ var ContentBoxHeader = React10.forwardRef(({ className, ...props }, ref) => /* @
   "div",
   {
     ref,
-    className: cn("flex flex-col space-y-1.5 p-6", className),
+    className: cn("flex flex-col space-y-1.5 p-3 md:p-6", className),
     ...props
   }
 ));
@@ -1144,7 +1144,7 @@ var ContentBoxTitle = React10.forwardRef(({ className, ...props }, ref) => /* @_
   {
     ref,
     className: cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "text-lg md:text-2xl font-semibold leading-none tracking-tight",
       className
     ),
     ...props
@@ -1160,7 +1160,7 @@ var ContentBoxDescription = React10.forwardRef(({ className, ...props }, ref) =>
   }
 ));
 ContentBoxDescription.displayName = "ContentBoxDescription";
-var ContentBoxContent = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { ref, className: cn("p-6 pt-0", className), ...props }));
+var ContentBoxContent = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("div", { ref, className: cn("p-3 pt-0 md:p-6 md:pt-0", className), ...props }));
 ContentBoxContent.displayName = "ContentBoxContent";
 var ContentBoxFooter = React10.forwardRef(({ className, ...props }, ref) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
   "div",
@@ -1432,11 +1432,11 @@ var Input = React16.forwardRef(
           "div",
           {
             className: cn(
-              "relative flex items-center gap-2 px-3 py-3.5 rounded-md bg-white border",
+              "relative flex items-center gap-2 rounded-md bg-white border",
               isError ? "border-destructive focus-within:ring-0" : isActive ? "border-supreme-blue-800 focus-within:ring-0" : isDisabled ? "border-neutral-300 bg-neutral-200" : "border-neutral-300 focus-within:ring-2 focus-within:ring-supreme-blue-500"
             ),
             children: [
-              leftIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-center shrink-0 w-5 h-5", children: [
+              leftIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center ml-3 justify-center shrink-0 w-5 h-5", children: [
                 React16.isValidElement(leftIcon) && React16.cloneElement(leftIcon, {
                   className: cn(
                     "w-[20px] h-[20px]",
@@ -1452,15 +1452,17 @@ var Input = React16.forwardRef(
                 {
                   type,
                   className: cn(
-                    "flex-1 text-sm min-w-0 h-auto bg-transparent border-0 text-sm leading-5 placeholder:text-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
-                    className
+                    "flex-1 text-sm min-w-0 p-3 h-auto rounded-lg bg-transparent border-0 text-sm leading-5 placeholder:text-neutral-400 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+                    className,
+                    leftIcon && "px-0",
+                    rightIcon && "px-0"
                   ),
                   ref,
                   disabled: isDisabled,
                   ...props
                 }
               ),
-              rightIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex items-center justify-center shrink-0 w-5 h-5", children: [
+              rightIcon && /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex mr-3 items-center justify-center shrink-0 w-5 h-5", children: [
                 React16.isValidElement(rightIcon) && React16.cloneElement(rightIcon, {
                   className: cn(
                     "w-[20px] h-[20px]",
@@ -5999,7 +6001,7 @@ var Dropdown = React39.forwardRef(
               ref,
               type: "button",
               className: cn(
-                "flex w-[267px] items-center justify-between gap-2 rounded-md border border-neutral-300 bg-white px-3 py-3 text-sm text-neutral-700 transition-colors",
+                "flex items-center justify-between gap-2 rounded-md border border-neutral-300 bg-white px-3 py-3 text-sm text-neutral-700 transition-colors",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-supreme-blue-500 focus-visible:ring-offset-2",
                 disabled && "cursor-not-allowed bg-neutral-100 text-neutral-400",
                 className
@@ -6021,7 +6023,7 @@ var Dropdown = React39.forwardRef(
             PopoverContent,
             {
               className: cn(
-                "w-[267px] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
+                "w-[var(--radix-popover-trigger-width)] overflow-hidden rounded-md border border-neutral-200 bg-white p-0 shadow-lg",
                 !searchable && "pt-2"
               ),
               align: "start",

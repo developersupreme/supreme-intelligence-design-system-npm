@@ -15,10 +15,15 @@ const AnnouncementCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     author?: string;
+    authorClassName?: string;
     date?: string;
+    dateClassName?: string;
     content: string;
+    contentClassName?: string;
     badgeText?: string;
+    badgeClassName?: string;
   }
 >(({ className, title, author, date, content, badgeText, ...props }, ref) => {
   return (
@@ -32,13 +37,13 @@ const AnnouncementCard = React.forwardRef<
       {...props}
     >
       <div className="flex flex-col gap-2.5 items-start">
-        <h3 className="text-lg font-semibold text-black leading-7 whitespace-pre-wrap">
+        <h3 className={cn("text-lg font-semibold text-black leading-7 whitespace-pre-wrap", props.titleClassName)}>
           {title}
         </h3>
         {(author || date) && (
           <div className="flex gap-2.5 items-center">
             {author && (
-              <span className="text-xs font-normal text-neutral-500 leading-4">
+              <span className={cn("text-xs font-normal text-neutral-500 leading-4", props.authorClassName)}>
                 {author}
               </span>
             )}
@@ -46,19 +51,19 @@ const AnnouncementCard = React.forwardRef<
               <span className="text-xs text-neutral-500">|</span>
             )}
             {date && (
-              <span className="text-xs font-normal text-neutral-500 leading-4">
+              <span className={cn("text-xs font-normal text-neutral-500 leading-4", props.dateClassName)}>
                 {date}
               </span>
             )}
           </div>
         )}
-        <p className="text-base font-normal text-neutral-800 leading-6 w-full whitespace-pre-wrap">
+        <p className={cn("text-base font-normal text-neutral-800 leading-6 w-full whitespace-pre-wrap", props.contentClassName)}>
           {content}
         </p>
       </div>
       {badgeText && (
         <div className="absolute top-7 right-5">
-          <Badge variant="default" className="text-gray-600 text-xs">
+          <Badge variant="default" className={cn("text-gray-600 text-xs", props.badgeClassName)}>
             {badgeText}
           </Badge>
         </div>
@@ -73,11 +78,15 @@ const InfoCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     title?: string;
+    titleClassName?: string;
     subtitle?: string;
+    subtitleClassName?: string;
     description?: string;
+    descriptionClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
   }
->(({ className, title, subtitle, description, showIcon = true, ...props }, ref) => {
+>(({ className, showIcon = true, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -90,23 +99,24 @@ const InfoCard = React.forwardRef<
     >
       {showIcon && (
         <div className="absolute top-6 right-6">
-          <SparklesIcon className="w-[18px] h-[18px]" />
+          {props.icon || <SparklesIcon className="w-[18px] h-[18px]" />}
         </div>
       )}
       <div className={cn(showIcon && "pr-8")}>
-        {subtitle && (
-          <p className="text-lg font-normal text-neutral-700 mb-2">
-            {subtitle}
+        {props.subtitle && (
+          <p className={cn("text-lg font-normal text-neutral-700 mb-2", props.subtitleClassName)}>
+
+            {props.subtitle}
           </p>
         )}
-        {title && (
-          <h3 className="text-2xl font-semibold text-neutral-800 mb-1">
-            {title}
+        {props.title && (
+          <h3 className={cn("text-2xl font-semibold text-neutral-800 mb-1", props.titleClassName)}>
+            {props.title}
           </h3>
         )}
-        {description && (
-          <p className="text-base font-normal text-neutral-600 leading-6">
-            {description}
+        {props.description && (
+          <p className={cn("text-base font-normal text-neutral-600 leading-6", props.descriptionClassName)}>
+            {props.description}
           </p>
         )}
       </div>
@@ -120,11 +130,14 @@ const IconCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     value?: string | number;
     showLeftIcon?: boolean;
     showRightIcon?: boolean;
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
   }
->(({ className, title, value, showLeftIcon = true, showRightIcon = true, ...props }, ref) => {
+>(({ className, title, value, showLeftIcon = true, showRightIcon = true, leftIcon, rightIcon, ...props }, ref) => {
   return (
     <div
       ref={ref}
@@ -138,14 +151,14 @@ const IconCard = React.forwardRef<
       {/* Left side - Icon and content */}
       <div className="flex gap-3 items-center">
         {showLeftIcon && (
-          <div className="bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full flex-shrink-0">
-            <ArrowTrendingUpIcon className="w-[25px] h-[25px] text-neutral-800" />
+          <div className="flex-shrink-0">
+            {leftIcon || <ArrowTrendingUpIcon className="w-[25px] h-[25px] text-neutral-800" />}
           </div>
         )}
         {/* Content */}
         <div className="flex flex-col gap-1 items-start whitespace-nowrap">
           {title && (
-            <h3 className="text-base font-normal text-neutral-600 leading-6">
+            <h3 className={cn("text-base font-normal text-neutral-600 leading-6", props.titleClassName)}>
               {title}
             </h3>
           )}
@@ -156,7 +169,9 @@ const IconCard = React.forwardRef<
       </div>
       {/* Right side - Users icon */}
       {showRightIcon && (
-        <UsersIcon className="w-[35px] h-[35px] text-supreme-blue-700" />
+        <div className="flex-shrink-0">
+          {rightIcon || <UsersIcon className="w-[35px] h-[35px] text-supreme-blue-700" />}
+        </div>
       )}
     </div>
   );
@@ -168,7 +183,9 @@ const MessageAngle = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     title?: string;
+    titleClassName?: string;
     description?: string;
+    descriptionClassName?: string;
   }
 >(({ className, title, description, children, ...props }, ref) => (
   <div
@@ -180,10 +197,14 @@ const MessageAngle = React.forwardRef<
     {...props}
   >
     {title && (
-      <h3 className="text-base font-normal mb-3 text-neutral-600">{title}</h3>
+      <h3 className={cn("text-base font-normal mb-3 text-neutral-600", props.titleClassName)}>
+        {title}
+      </h3>
     )}
     {description && (
-      <p className="text-xs text-neutral-600 leading-relaxed">{description}</p>
+      <p className={cn("text-xs text-neutral-600 leading-relaxed", props.descriptionClassName)}>
+        {description}
+      </p>
     )}
     {children}
   </div>
@@ -194,10 +215,15 @@ const MessageCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     headerTitle: string;
+    headerTitleClassName?: string;
     mainContent: string;
+    mainTitleClassName?: string;
     nestedTitle: string;
+    nestedTitleClassName?: string;
     nestedContent: string;
+    nestedContentClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
   }
 >(
   (
@@ -223,20 +249,20 @@ const MessageCard = React.forwardRef<
     >
       {showIcon && (
         <div className="absolute top-6 right-6">
-          <PencilSquareIcon className="w-[18px] h-[18px] text-neutral-600" />
+          {props.icon || <PencilSquareIcon className="w-[18px] h-[18px] text-neutral-600" />}
         </div>
       )}
       <div className="flex flex-col gap-2.5 items-start">
         <div className="flex gap-2 items-center">
           <div className="w-2.5 h-2.5 bg-supreme-blue-300 rounded-full"></div>
-          <h3 className="text-lg font-semibold text-supreme-blue-800 leading-7 whitespace-nowrap">
+          <h3 className={cn("text-lg font-semibold text-supreme-blue-800 leading-7 whitespace-nowrap", props.headerTitleClassName)}>
             {headerTitle}
           </h3>
         </div>
-        <p className="text-xs font-normal text-neutral-600 leading-4 w-full whitespace-pre-wrap">
+        <p className={cn("text-xs font-normal text-neutral-600 leading-4 w-full whitespace-pre-wrap", props.mainTitleClassName)}>
           {mainContent}
         </p>
-        <MessageAngle title={nestedTitle} description={nestedContent} className="bg-gray-100 rounded-lg p-4" />
+        <MessageAngle title={nestedTitle} description={nestedContent} titleClassName={props.nestedTitleClassName} descriptionClassName={props.nestedContentClassName} />
       </div>
     </div>
   )
@@ -247,9 +273,13 @@ const HighlightCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     value: string | number;
+    valueClassName?: string;
     title: string;
+    titleClassName?: string;
     subtitle?: string;
+    subtitleClassName?: string;
     showIcon?: boolean;
+    icon?: React.ReactNode;
   }
 >(({ className, value, title, subtitle, showIcon = true, ...props }, ref) => (
   <div
@@ -264,18 +294,18 @@ const HighlightCard = React.forwardRef<
     {/* Left side - Circular icon container */}
     {showIcon && (
       <div className="bg-supreme-blue-50 flex items-center justify-center p-2.5 rounded-full flex-shrink-0">
-        <ArrowTrendingUpIcon className="w-[25px] h-[25px] text-neutral-800" />
+        {props.icon || <ArrowTrendingUpIcon className="w-[25px] h-[25px] text-neutral-800" />}
       </div>
     )}
 
     {/* Right side - Content */}
     <div className="flex flex-col gap-1">
-      <div className="text-3xl font-semibold text-neutral-800 leading-9 whitespace-nowrap">
+      <div className={cn("text-3xl font-semibold text-neutral-800 leading-9 whitespace-nowrap", props.valueClassName)}>
         {value}%
       </div>
-      <h3 className="text-base font-semibold text-neutral-600 leading-6">{title}</h3>
+      <h3 className={cn("text-base font-semibold text-neutral-600 leading-6", props.titleClassName)}>{title}</h3>
       {subtitle && (
-        <p className="text-base font-normal text-neutral-600 leading-6">{subtitle}</p>
+        <p className={cn("text-base font-normal text-neutral-600 leading-6", props.subtitleClassName)}>{subtitle}</p>
       )}
     </div>
   </div>
@@ -287,8 +317,11 @@ const HighlightCTACard = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     icon?: React.ReactNode;
     title?: string;
+    titleClassName?: string;
     value?: string | number;
+    valueClassName?: string;
     description: string;
+    descriptionClassName?: string;
     ctaText?: string;
     onCtaClick?: () => void;
     showIcon?: boolean;
@@ -317,20 +350,20 @@ const HighlightCTACard = React.forwardRef<
         </div>
       )}
       {title && (
-        <h3 className="text-2xl font-semibold text-supreme-blue-900 leading-8 whitespace-pre-wrap">
+        <h3 className={cn("text-2xl font-semibold text-supreme-blue-900 leading-8 whitespace-pre-wrap", props.titleClassName)}>
           {title}
         </h3>
       )}
     </div>
 
     {/* Value - only show if value is provided */}
-    {value && <div className="text-4xl font-bold text-supreme-blue-900 leading-10 whitespace-nowrap">
+    {value && <div className={cn("text-4xl font-bold text-supreme-blue-900 leading-10 whitespace-nowrap", props.valueClassName)}>
       {value}
     </div>}
 
     {/* Description */}
     {showDescription && (
-      <p className="text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap">
+      <p className={cn("text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", props.descriptionClassName)}>
         {description}
       </p>
     )}
@@ -354,7 +387,9 @@ const HowItWorksCard = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     stepNumber?: number;
     title: string;
+    titleClassName?: string;
     description: string;
+    descriptionClassName?: string;
     type?: "numbers" | "icons";
     icon?: React.ReactNode;
   }
@@ -379,11 +414,11 @@ const HowItWorksCard = React.forwardRef<
           </span>
         )}
       </div>
-      <h3 className="text-xl font-normal text-black text-center leading-7">
+      <h3 className={cn("text-xl font-normal text-black text-center leading-7", props.titleClassName)}>
         {title}
       </h3>
     </div>
-    <p className="text-base font-normal text-neutral-600 text-center leading-6 w-full whitespace-pre-wrap">
+    <p className={cn("text-base font-normal text-neutral-600 text-center leading-6 w-full whitespace-pre-wrap", props.descriptionClassName)}>
       {description}
     </p>
   </div>
@@ -433,7 +468,9 @@ const ContentTypeCard = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & {
     title: string;
+    titleClassName?: string;
     description: string;
+    descriptionClassName?: string;
     icon?: React.ReactNode;
     variant?: "default" | "selected" | "hover" | "ghost";
   }
@@ -462,10 +499,10 @@ const ContentTypeCard = React.forwardRef<
           {icon || <DocumentIcon className="w-[35px] h-[35px] text-supreme-blue-700" />}
         </div>
         <div className="flex flex-1 flex-col gap-1 items-start leading-6 min-w-0 whitespace-pre-wrap">
-          <p className="text-lg font-semibold text-neutral-900 w-full">
+          <p className={cn("text-lg font-semibold text-neutral-900 w-full", props.titleClassName)}>
             {title}
           </p>
-          <p className="text-base font-normal text-neutral-600 w-full">
+          <p className={cn("text-base font-normal text-neutral-600 w-full", props.descriptionClassName)}>
             {description}
           </p>
         </div>
@@ -481,6 +518,8 @@ const CardWithProgress = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement> & {
     title: string;
     description: string;
+    titleClassName?: string;
+    descriptionClassName?: string;
     progressItems: Array<{
       label: string;
       value: number;
@@ -499,13 +538,13 @@ const CardWithProgress = React.forwardRef<
     {/* Header */}
     <div className="flex gap-3 items-center">
       <ArrowTrendingUpIcon className="w-[25px] h-[25px] text-neutral-800" />
-      <h3 className="text-xl font-bold text-supreme-blue-900 leading-7 whitespace-pre-wrap w-[258px]">
+      <h3 className={cn("text-xl font-bold text-supreme-blue-900 leading-7 whitespace-pre-wrap w-[258px]", props.titleClassName)}>
         {title}
       </h3>
     </div>
 
     {/* Description */}
-    <p className="text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap">
+    <p className={cn("text-base font-normal text-neutral-600 leading-6 w-full whitespace-pre-wrap", props.descriptionClassName)}>
       {description}
     </p>
 

@@ -36,9 +36,9 @@ export default function ToastDemo() {
   }
 
   return (
-    <div className="p-8 space-y-8">
+    <div className="p-4 md:p-8 space-y-8">
       <div>
-        <h1 className="text-3xl font-bold mb-4">Toast Component Demo</h1>
+        <h1 className="text-xl md:text-3xl font-bold mb-4">Toast Component Demo</h1>
         <p className="text-muted-foreground mb-6">
           This demonstrates the updated toast component with the new structure:
           information icon on the left, main content area, and close button on the right.
